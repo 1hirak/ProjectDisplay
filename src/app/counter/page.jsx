@@ -1,18 +1,31 @@
 'use client'
 
-import { useState } from "react";
+import { useReducer } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus, RefreshCw } from "lucide-react";
 
+const reducer =(state,action)=>{
+    if (action.type==="increment") {
+        return state+1
+    }
+    if (action.type==="decrement") {
+        return state-1
+    }
+    if (action.type==="reset") {
+        return initialstate
+    }
+    else {
+        return state 
+    }
+}
+
+const initialstate = 0;
+
 export default function CounterApp() {
 
+    const [count, dispatch] = useReducer(reducer,initialstate )
 
-    const [count, setCount] = useState(0);
-
-    const increment = () => setCount(count + 1);
-    const decrement = () => setCount(count - 1);
-    const reset = () => setCount(0);
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
@@ -37,7 +50,7 @@ export default function CounterApp() {
             <div className="flex space-x-4">
               {/* Decrement Button */}
               <Button
-                onClick={decrement}
+                onClick={()=>dispatch({type:"decrement"})}
                 variant="outline"
                 size="lg"
                 className="bg-red-50 hover:bg-red-100"
@@ -47,7 +60,7 @@ export default function CounterApp() {
 
               {/* Reset Button */}
               <Button
-                onClick={reset}
+                onClick={()=>dispatch({type:"reset"})}
                 variant="outline"
                 size="lg"
                 className="bg-gray-50 hover:bg-gray-100"
@@ -57,7 +70,7 @@ export default function CounterApp() {
 
               {/* Increment Button */}
               <Button
-                onClick={increment}
+                onClick={()=>dispatch({type:"increment"})}
                 variant="outline"
                 size="lg"
                 className="bg-green-50 hover:bg-green-100"
