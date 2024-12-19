@@ -55,6 +55,13 @@ export function Navbar() {
                     Counter
                   </Link>
                 </Button>
+                <Button
+                  
+                  variant="ghost"
+                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
+                > <Link href="/todo1">todo1</Link>
+                  
+                </Button>
               </Card>
             </div>
           </div>

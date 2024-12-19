@@ -1,4 +1,3 @@
-
 'use client'
 
 import { useReducer, useState } from "react";
@@ -7,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Trash2, Plus } from "lucide-react";
 
+const todos = []
 // TODO: Implement the reducer function
 const reducer = (state, action) => {
     // Implement logic for:
