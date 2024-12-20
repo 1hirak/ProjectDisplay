@@ -16,7 +16,7 @@ const todos = [
 
 const reducer = (state, action) => {
   if (action.type === "addTodo") {
-    return [...state, action.payload];
+    return [action.payload,...state];
   }
   if (action.type === "delete") {
     return state.filter((x) => x.id !== action.payload);
@@ -61,8 +61,9 @@ export default function todo1() {
                 setInputTodo(e.target.value);
               }}
               onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  handleAddTodo();
+                if (e.key === "Enter") { 
+                     
+                  handleAddTodo()
                 }
               }}
               placeholder="Enter a new todo"

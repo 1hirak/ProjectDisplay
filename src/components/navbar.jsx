@@ -62,6 +62,13 @@ export function Navbar() {
                 > <Link href="/todo1">todo1</Link>
                   
                 </Button>
+                <Button
+                  
+                  variant="ghost"
+                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
+                > <Link href="/themeToggle">themeToggle</Link>
+                  
+                </Button>
               </Card>
             </div>
           </div>
