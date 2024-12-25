@@ -5,11 +5,39 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export default function ThemeToggleApp() {
+    const theme = { 
+        dark:"flex justify-center items-center min-h-screen bg-gray-500",
+        light : "flex justify-center items-center min-h-screen bg-dark-100",
+    }
+    const initialstate = { 
+        theme: theme.light,
+        name :"light",   
+    }
+
+    const reducer = (state,action)=>{
+        if (action.type==="light") {
+            return state= {
+                theme: theme.dark,
+                name :"dark",
+            }
+        }
+        else {
+            return state= {
+                theme: theme.light,
+                name :"light",
+        }
+
+    }}
 
   // Add useReducer here
+  const [state, dispatch] = useReducer(reducer ,initialstate)
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className={state.theme}>
+        {
+            console.log(state)
+            
+        }
       <Card className="w-96 shadow-xl">
         <CardHeader>
           <CardTitle className="text-center text-2xl font-bold">Theme Toggle</CardTitle>
@@ -17,7 +45,7 @@ export default function ThemeToggleApp() {
         <CardContent>
           {/* Theme Text */}
           <div className="text-center text-xl font-semibold">
-            Current Theme: {/* Add theme state here */}
+            Current Theme: {state.name}
           </div>
 
           {/* Toggle Button */}
@@ -25,7 +53,7 @@ export default function ThemeToggleApp() {
             <Button
               variant="outline"
               className="bg-blue-50 hover:bg-blue-100"
-              // Add onClick logic here
+              onClick= { ()=> dispatch({type: state.name})}
             >
               Toggle Theme
             </Button>
