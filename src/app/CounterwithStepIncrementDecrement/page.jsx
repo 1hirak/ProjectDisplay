@@ -1,13 +1,9 @@
 "use client";
-
 import { useReducer, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-
 export default function CounterApp() {
-  
-
   const initialState = "";
   const reducer = (state, action) => {
     switch (action.type) {
@@ -22,9 +18,7 @@ export default function CounterApp() {
     }
   };
   const [step, setStep] = useState(1);
-
   const [state, dispatch] = useReducer(reducer, initialState);
-
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <Card className="w-96 shadow-xl">
@@ -39,7 +33,6 @@ export default function CounterApp() {
             {/* Display count here */}
             {state}
           </div>
-
           {/* Step Input */}
           <div className="flex justify-center items-center mb-4">
             <span className="mr-2">Step:</span>
@@ -49,7 +42,6 @@ export default function CounterApp() {
               onChange={(e) => setStep(Number(e.target.value))}
               className="w-20 text-center"
             />
-            
             <Button
                 className= "ml-2"
               onClick={() => {
@@ -60,7 +52,6 @@ export default function CounterApp() {
               Reset
             </Button>
           </div>
-
           {/* Buttons */}
           <div className="flex justify-between">
             <Button

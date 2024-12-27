@@ -97,6 +97,13 @@ export function Navbar() {
                 > <Link href="/CounterwithStepIncrementDecrement">Counter /w Step In/De</Link>
                   
                 </Button>
+                <Button
+                  
+                  variant="ghost"
+                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
+                > <Link href="/ShoppingCartManager">Shopping Cart Manager</Link>
+                  
+                </Button>
               </Card>
             </div>
           </div>
