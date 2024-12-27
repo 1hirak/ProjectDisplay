@@ -10,10 +10,10 @@ export default function NumberDoublerApp() {
     switch (action.type) {
       case "double":
         return !state ? 1 : state * 2;
-        break;
+      //return breaks the function , so no need to use break
       case "double":
         return (state = initialState);
-        break;
+      //return breaks the function , so no need to use break
       default:
         break;
     }
@@ -25,7 +25,6 @@ export default function NumberDoublerApp() {
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <Card className="w-96 shadow-xl">
         <CardHeader>
-          
           <CardTitle className="text-center text-2xl font-bold">
             Number Doubler
           </CardTitle>
