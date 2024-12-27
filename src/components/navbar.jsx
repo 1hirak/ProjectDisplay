@@ -90,6 +90,13 @@ export function Navbar() {
                 > <Link href="/ShowHideTextApp">Show/Hide Text App</Link>
                   
                 </Button>
+                <Button
+                  
+                  variant="ghost"
+                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
+                > <Link href="/CounterwithStepIncrementDecrement">Counter /w Step In/De</Link>
+                  
+                </Button>
               </Card>
             </div>
           </div>
