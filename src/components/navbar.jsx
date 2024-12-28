@@ -32,7 +32,7 @@ export function Navbar() {
               className="flex items-center cursor-pointer"
             >
               <Calculator className="mr-2 h-4 w-4" />
-              Pages
+              Projects
             </Button>
             {/* Dropdown Menu */}
             <div
@@ -104,15 +104,51 @@ export function Navbar() {
                 > <Link href="/ShoppingCartManager">Shopping Cart Manager</Link>
                   
                 </Button>
+                <Button
+                  
+                  variant="ghost"
+                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
+                > <Link href="/SimpleTabSwitcher">Simple Tab Switcher</Link>
+                  
+                </Button> 
               </Card>
             </div>
           </div>
 
           {/* Settings Button */}
-          <Button variant="ghost" className="flex items-center">
-            <Settings className="mr-2 h-4 w-4" />
-            Settings
-          </Button>
+          <div className="relative group">
+            <Button
+              variant="ghost"
+              className="flex items-center cursor-pointer"
+            >
+              <Calculator className="mr-2 h-4 w-4" />
+              Projects 2
+            </Button>
+            {/* Dropdown Menu */}
+            <div
+              className="absolute right-0 hidden group-hover:block group-hover:pointer-events-auto mt-0 w-48 rounded-lg 
+              bg-white shadow-lg dark:bg-black transition delay-200 duration-300 "
+            >
+              <Card className="space-y-1 p-2">
+                <Button
+                  
+                  variant="ghost"
+                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
+                > <Link href="/calculator">Calculator</Link>
+                  
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
+                >
+                  <Link href="/counter">
+                    Counter
+                  </Link>
+                </Button>
+                
+              </Card>
+            </div>
+          </div>
         </div>
 
         {/* Right Side Actions */}
