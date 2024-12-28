@@ -111,6 +111,13 @@ export function Navbar() {
                 > <Link href="/SimpleTabSwitcher">Simple Tab Switcher</Link>
                   
                 </Button> 
+                <Button
+                  
+                  variant="ghost"
+                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
+                > <Link href="/AccordionComponent">Accordion Component</Link>
+                  
+                </Button> 
               </Card>
             </div>
           </div>
