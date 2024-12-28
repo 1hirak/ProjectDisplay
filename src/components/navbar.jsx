@@ -125,6 +125,13 @@ export function Navbar() {
                 > <Link href="/MultiInputFormStateManager">Multi-Input Form Stmangr</Link>
                   
                 </Button> 
+                <Button
+                  
+                  variant="ghost"
+                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
+                > <Link href="/LightandDarkModeToggle">Light n Dark Mode Toggle</Link>
+                  
+                </Button> 
               </Card>
             </div>
           </div>
