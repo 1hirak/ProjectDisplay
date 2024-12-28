@@ -122,7 +122,7 @@ export function Navbar() {
                   
                   variant="ghost"
                   className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                > <Link href="/MultiInputFormStateManager">Multi-Input Form State Manager</Link>
+                > <Link href="/MultiInputFormStateManager">Multi-Input Form Stmangr</Link>
                   
                 </Button> 
               </Card>
