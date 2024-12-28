@@ -5,7 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-
 const initialState = {
   name: "",
   email: "",
@@ -13,17 +12,9 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
- 
-
   switch (action.type) {
-    case "name":
-      return { ...state, name: action.payload };
-    case "email":
-      return { ...state, email: action.payload };
-    case "password":
-      return { ...state, password: action.payload };
-      
-
+    case "update_data":
+      return { ...state, [action.payload.field]: action.payload.value };
     case "reset":
       return initialState;
 
@@ -35,13 +26,13 @@ const reducer = (state, action) => {
 export default function MultiInputForm() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const onSubmit = ()=>{
+  const onSubmit = () => {
     alert(
-        `Name: ${state.name}, Email: ${state.email}, Password: ${state.password}`
-      );
-  }
+      `Name: ${state.name}, Email: ${state.email}, Password: ${state.password}`
+    );
+  };
 
-  return ( 
+  return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <Card className="w-[400px] shadow-xl">
         <CardHeader>
@@ -55,35 +46,46 @@ export default function MultiInputForm() {
             <Input
               placeholder="Enter Name"
               value={state.name}
+              autoComplete="off"
               onChange={(e) =>
-                dispatch({ type: "name", payload: e.target.value })
+                dispatch({
+                  type: "update_data",
+                  payload: { field: "name", value: e.target.value },
+                })
               }
             />
             <Input
+            name="unique-email"
               placeholder="Enter Email"
               type="email"
               value={state.email}
+              onFocus={(e) => e.target.setAttribute("autocomplete", "off")}
               autoComplete="off"
               onChange={(e) =>
-                dispatch({ type: "email", payload: e.target.value })
+                dispatch({
+                  type: "update_data",
+                  payload: { field: "email", value: e.target.value },
+                })
               }
+              suppressHydrationWarning
             />
             <Input
               placeholder="Enter Password"
               type="password"
               value={state.password}
+              autoComplete="off"
               onChange={(e) =>
-                dispatch({ type: "password", payload: e.target.value })
+                dispatch({
+                  type: "update_data",
+                  payload: { field: "password", value: e.target.value },
+                })
               }
             />
           </div>
 
           {/* Submit and Reset */}
           <div className="flex justify-between mt-4">
-            <Button
-              onClick={() => onSubmit()}
-              variant="outline"
-            >
+            <Button onClick={() => onSubmit()} variant="outline">
               Submit
             </Button>
             <Button
@@ -95,7 +97,6 @@ export default function MultiInputForm() {
               Reset
             </Button>
           </div>
-          
         </CardContent>
       </Card>
     </div>
