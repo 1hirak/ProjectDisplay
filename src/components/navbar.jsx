@@ -132,6 +132,13 @@ export function Navbar() {
                 > <Link href="/LightandDarkModeToggle">Light n Dark Mode Toggle</Link>
                   
                 </Button> 
+                <Button
+                  
+                  variant="ghost"
+                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
+                > <Link href="/TodoListwith Mark">Todo List with Mark as Completed</Link>
+                  
+                </Button>
               </Card>
             </div>
           </div>
