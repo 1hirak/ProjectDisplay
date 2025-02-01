@@ -58,9 +58,13 @@ export default function TodoApp() {
     }
 
     if (action.type === "edit") {
-      return state.map((x) =>
-        x.id === action.payload.id ? { ...x, name: action.payload.name } : x
-      );
+      if (action.payload.name.trim().length == 0) {
+        return state;
+      } else {
+        return state.map((x) =>
+          x.id === action.payload.id ? { ...x, name: action.payload.name } : x
+        );
+      }
     }
 
     return state;
