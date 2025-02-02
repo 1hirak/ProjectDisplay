@@ -14,13 +14,12 @@ export default function TodoApp() {
         id: Date.now(),
         task: action.value,
       };
-      return [...state,el]
+      return [...state, el];
     }
-    if (action.type==="reset") {
-        return state= []
-        
+    if (action.type === "reset") {
+      return (state = []);
     }
-    return state
+    return state;
   };
 
   const [value, setvalue] = useState("");
@@ -38,19 +37,19 @@ export default function TodoApp() {
         <CardContent>
           <div className="space-y-4">
             <Input
-                value={value}
+              value={value}
               onChange={(e) => {
-                
                 setvalue(e.target.value);
               }}
               type="text"
             />
             {/* Display List */}
-            {state&& state.map((x) => (
-              <div key={x.id}>
-                <ul className="list-disc pl-5">{x.task}</ul>
-              </div>
-            ))}
+            {state &&
+              state.map((x) => (
+                <div key={x.id}>
+                  <ul className="list-disc pl-5">{x.task}</ul>
+                </div>
+              ))}
 
             {/* Add and Reset Buttons */}
             <div className="flex space-x-4">
@@ -59,7 +58,7 @@ export default function TodoApp() {
                 className="bg-green-50 hover:bg-green-100"
                 onClick={() => {
                   dispatch({ type: "add", value });
-                  setvalue("")
+                  setvalue("");
                 }}
               >
                 Add Task
@@ -67,7 +66,7 @@ export default function TodoApp() {
               <Button
                 variant="outline"
                 className="bg-gray-50 hover:bg-gray-100"
-                onClick= {()=>dispatch({type:"reset"})}
+                onClick={() => dispatch({ type: "reset" })}
               >
                 Reset List
               </Button>
