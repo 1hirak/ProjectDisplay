@@ -6,6 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PencilLine, Trash2 } from "lucide-react";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function TodoApp() {
   const initialState = [
@@ -41,7 +42,7 @@ export default function TodoApp() {
         return [
           ...state,
           {
-            id: Date.now(),
+            id: uuidv4(),
             name: action.task,
             checked: false,
           },
@@ -73,7 +74,12 @@ export default function TodoApp() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
+    
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      {
+      console.log(state)
+      
+    }
       <Card className="w-128 shadow-xl">
         <CardHeader>
           <CardTitle className="text-center text-2xl font-bold">
