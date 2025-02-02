@@ -19,10 +19,7 @@ export function Navbar() {
           {/* Home Button */}
           <Button variant="ghost" className="flex items-center">
             <Home className="mr-2 h-4 w-4" />
-            <Link href="/">
-                Home
-            </Link>
-            
+            <Link href="/">Home</Link>
           </Button>
 
           {/* Calculators Dropdown */}
@@ -36,108 +33,115 @@ export function Navbar() {
             </Button>
             {/* Dropdown Menu */}
             <div
-              className="absolute right-0 hidden group-hover:block group-hover:pointer-events-auto mt-0 w-48 rounded-lg 
+              className="absolute right-0 hidden group-hover:block group-hover:pointer-events-auto mt-0 w-72 rounded-lg 
               bg-white shadow-lg dark:bg-black transition delay-200 duration-300 "
             >
               <Card className="space-y-1 p-2">
                 <Button
-                  
                   variant="ghost"
                   className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                > <Link href="/calculator">Calculator</Link>
-                  
+                >
+                  {" "}
+                  <Link href="/calculator">Calculator</Link>
                 </Button>
                 <Button
                   variant="ghost"
                   className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
                 >
-                  <Link href="/counter">
-                    Counter
+                  <Link href="/counter">Counter</Link>
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
+                >
+                  {" "}
+                  <Link href="/todo1">todo1</Link>
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
+                >
+                  {" "}
+                  <Link href="/themeToggle">themeToggle</Link>
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
+                >
+                  {" "}
+                  <Link href="/LightnDarkBulb">Light and Dark Bulb App</Link>
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
+                >
+                  {" "}
+                  <Link href="/NumberDoublerApp">Number Doubler App</Link>
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
+                >
+                  {" "}
+                  <Link href="/ShowHideTextApp">Show/Hide Text App</Link>
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
+                >
+                  {" "}
+                  <Link href="/CounterwithStepIncrementDecrement">
+                    Counter /w Step In/De
                   </Link>
                 </Button>
                 <Button
-                  
                   variant="ghost"
                   className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                > <Link href="/todo1">todo1</Link>
-                  
+                >
+                  {" "}
+                  <Link href="/ShoppingCartManager">Shopping Cart Manager</Link>
                 </Button>
                 <Button
-                  
                   variant="ghost"
                   className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                > <Link href="/themeToggle">themeToggle</Link>
-                  
+                >
+                  {" "}
+                  <Link href="/SimpleTabSwitcher">Simple Tab Switcher</Link>
                 </Button>
                 <Button
-                  
                   variant="ghost"
                   className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                > <Link href="/LightnDarkBulb">Light and Dark Bulb App</Link>
-                  
+                >
+                  {" "}
+                  <Link href="/AccordionComponent">Accordion Component</Link>
                 </Button>
                 <Button
-                  
                   variant="ghost"
                   className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                > <Link href="/NumberDoublerApp">Number Doubler App</Link>
-                  
+                >
+                  {" "}
+                  <Link href="/MultiInputFormStateManager">
+                    Multi-Input Form State Manager
+                  </Link>
                 </Button>
                 <Button
-                  
                   variant="ghost"
                   className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                > <Link href="/ShowHideTextApp">Show/Hide Text App</Link>
-                  
+                >
+                  {" "}
+                  <Link href="/LightandDarkModeToggle">
+                    Light n Dark Mode Toggle
+                  </Link>
                 </Button>
                 <Button
-                  
                   variant="ghost"
                   className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                > <Link href="/CounterwithStepIncrementDecrement">Counter /w Step In/De</Link>
-                  
-                </Button>
-                <Button
-                  
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                > <Link href="/ShoppingCartManager">Shopping Cart Manager</Link>
-                  
-                </Button>
-                <Button
-                  
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                > <Link href="/SimpleTabSwitcher">Simple Tab Switcher</Link>
-                  
-                </Button> 
-                <Button
-                  
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                > <Link href="/AccordionComponent">Accordion Component</Link>
-                  
-                </Button> 
-                <Button
-                  
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                > <Link href="/MultiInputFormStateManager">Multi-Input Form Stmangr</Link>
-                  
-                </Button> 
-                <Button
-                  
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                > <Link href="/LightandDarkModeToggle">Light n Dark Mode Toggle</Link>
-                  
-                </Button> 
-                <Button
-                  
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                > <Link href="/TodoListwith Mark">Todo List with Mark as Completed</Link>
-                  
+                >
+                  {" "}
+                  <Link href="/TodoListwithMark">
+                    Todo List with Mark as Completed{" "}
+                    <span className="text-red-700"> **</span>
+                  </Link>
                 </Button>
               </Card>
             </div>
@@ -154,26 +158,31 @@ export function Navbar() {
             </Button>
             {/* Dropdown Menu */}
             <div
-              className="absolute right-0 hidden group-hover:block group-hover:pointer-events-auto mt-0 w-48 rounded-lg 
+              className="absolute right-0 hidden group-hover:block group-hover:pointer-events-auto mt-0 w-72 rounded-lg 
               bg-white shadow-lg dark:bg-black transition delay-200 duration-300 "
             >
               <Card className="space-y-1 p-2">
                 <Button
-                  
                   variant="ghost"
                   className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                > <Link href="/calculator">Calculator</Link>
-                  
+                >
+                  {" "}
+                  <Link href="/calculator">Calculator</Link>
                 </Button>
                 <Button
                   variant="ghost"
                   className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
                 >
-                  <Link href="/counter">
-                    Counter
+                  <Link href="/counter">Counter</Link>
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
+                >
+                  <Link href="/CounterwithUndoandRedo">
+                    Counter with Undo and Redo
                   </Link>
                 </Button>
-                
               </Card>
             </div>
           </div>
