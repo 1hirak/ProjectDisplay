@@ -71,9 +71,8 @@ export default function CounterUndoRedo() {
     return state.currindex !== 0;
   };
 
-  const showReset = () => {
-    let val = state.val + state.currindex;
-    return val === 0;
+  const hideReset = () => {
+    return state.history.length === 1;
   };
 
   return (
@@ -85,7 +84,7 @@ export default function CounterUndoRedo() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-center">
-          <div className="text-6xl font-bold mb-4">{state.val}</div>
+          <div className="text-6xl font-bold mb-4">{!hideReset()?state.val:"-_-"}</div>
           <div className="flex justify-between">
             <Button
               onClick={() => {
@@ -145,7 +144,7 @@ export default function CounterUndoRedo() {
               </Button>
             )}
 
-            {showReset() ? (
+            {hideReset() ? (
               <Button
                 disabled
                 onClick={() => {
