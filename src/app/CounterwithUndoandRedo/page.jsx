@@ -52,6 +52,12 @@ export default function CounterUndoRedo() {
           val: newval,
         };
       }
+
+      case "reset": {
+        return initialstate
+      }
+
+
       default:
         return state;
     }
@@ -66,7 +72,6 @@ export default function CounterUndoRedo() {
     return state.currindex !== 0;
   };
 
-
   return (
     <div className="flex justify-center items-center min-h-screen">
       <Card className="w-80 shadow-xl">
@@ -76,9 +81,7 @@ export default function CounterUndoRedo() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-center">
-          <div className="text-6xl font-bold mb-4">
-            {state.val} 
-          </div>
+          <div className="text-6xl font-bold mb-4">{state.val}</div>
           <div className="flex justify-between">
             <Button
               onClick={() => {
@@ -137,6 +140,15 @@ export default function CounterUndoRedo() {
                 Redo
               </Button>
             )}
+
+            <Button
+              onClick={() => {
+                dispatch({ type: "reset" });
+              }}
+              variant="outline"
+            >
+              Reset
+            </Button>
           </div>
         </CardContent>
       </Card>
