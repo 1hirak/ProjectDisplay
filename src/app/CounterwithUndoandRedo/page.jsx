@@ -54,9 +54,8 @@ export default function CounterUndoRedo() {
       }
 
       case "reset": {
-        return initialstate
+        return initialstate;
       }
-
 
       default:
         return state;
@@ -70,6 +69,11 @@ export default function CounterUndoRedo() {
 
   const showRedo = () => {
     return state.currindex !== 0;
+  };
+
+  const showReset = () => {
+    let val = state.val + state.currindex;
+    return val === 0;
   };
 
   return (
@@ -141,14 +145,26 @@ export default function CounterUndoRedo() {
               </Button>
             )}
 
-            <Button
-              onClick={() => {
-                dispatch({ type: "reset" });
-              }}
-              variant="outline"
-            >
-              Reset
-            </Button>
+            {showReset() ? (
+              <Button
+                disabled
+                onClick={() => {
+                  dispatch({ type: "reset" });
+                }}
+                variant="outline"
+              >
+                Reset
+              </Button>
+            ) : (
+              <Button
+                onClick={() => {
+                  dispatch({ type: "reset" });
+                }}
+                variant="outline"
+              >
+                Reset
+              </Button>
+            )}
           </div>
         </CardContent>
       </Card>
