@@ -183,6 +183,14 @@ export function Navbar() {
                     Counter with Undo and Redo
                   </Link>
                 </Button>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
+                >
+                  <Link href="/FormValidation">
+                  Form Validation
+                  </Link>
+                </Button>
               </Card>
             </div>
           </div>
