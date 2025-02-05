@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export default function LightBulbApp() {
-let  isOn = true
+let  isOn = Boolean(1)
   const initailState = { isOn };
   const reducer = (state, action) => {
     switch (action.type) {
