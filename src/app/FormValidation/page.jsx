@@ -34,9 +34,11 @@ const validateEmail = (email) => {
   }
   return null;
 };
-const handleSubmit = (state)=>{
-    window.alert(state.email+"  "+state.password)
-}
+const handleSubmit = (state) => {
+  window.alert(state.email + "  " + state.password);
+};
+
+
 export default function FormValidation() {
   const initialstate = {
     message: {
@@ -45,7 +47,7 @@ export default function FormValidation() {
     },
     email: "",
     password: "",
-    showDialog:false
+    showDialog: false,
   };
 
   const reducer = (state, action) => {
@@ -96,21 +98,20 @@ export default function FormValidation() {
         return newobj;
       }
 
-      case 'submit':{
-        if(state.message.email||state.message.pass){
-            let newobj = {
-                ...state,
-                showDialog:true
-            }
-            return newobj
-        }
-        else {
-            handleSubmit(state);
-            let newobj = {
-                ...state,
-                showDialog:false
-            }
-            return newobj
+      case "submit": {
+        if (state.message.email || state.message.pass) {
+          let newobj = {
+            ...state,
+            showDialog: true,
+          };
+          return newobj;
+        } else {
+          handleSubmit(state);
+          let newobj = {
+            ...state,
+            showDialog: false,
+          };
+          return newobj;
         }
       }
 
@@ -119,11 +120,7 @@ export default function FormValidation() {
     }
   };
 
-
-
   const [state, dispatch] = useReducer(reducer, initialstate);
-
- 
 
   return (
     <div className="flex justify-center items-center min-h-screen">
@@ -142,9 +139,13 @@ export default function FormValidation() {
                 dispatch({ type: "email", payload: e.target.value });
               }}
             />
-            {state.showDialog ? <div className="text-red-500 text-sm">
-              {state.message.email || ""}
-            </div>:""}
+            {state.showDialog ? (
+              <div className="text-red-500 text-sm">
+                {state.message.email || ""}
+              </div>
+            ) : (
+              ""
+            )}
             <Input
               placeholder="Password"
               type="password"
@@ -152,13 +153,16 @@ export default function FormValidation() {
                 dispatch({ type: "password", payload: e.target.value });
               }}
             />
-            {state.showDialog?
-            <div className="text-red-500 text-sm">
-              {state.message.pass || ""}
-            </div>:""}
+            {state.showDialog ? (
+              <div className="text-red-500 text-sm">
+                {state.message.pass || ""}
+              </div>
+            ) : (
+              ""
+            )}
             <Button
               onClick={() => {
-                dispatch({type:"submit"})
+                dispatch({ type: "submit" });
               }}
             >
               Submit
@@ -170,3 +174,114 @@ export default function FormValidation() {
   );
 }
 
+
+// 1. Remove the side‑effect from the reducer ("submit" case)
+// Change at around Line 80 (inside your reducer):
+
+// Replace this:
+
+// js
+// Copy
+// Edit
+//       case "submit": {
+//         if (state.message.email || state.message.pass) {
+//           let newobj = {
+//             ...state,
+//             showDialog: true,
+//           };
+//           return newobj;
+//         } else {
+//           handleSubmit(state);
+//           let newobj = {
+//             ...state,
+//             showDialog: false,
+//           };
+//           return newobj;
+//         }
+//       }
+// with this:
+
+// js
+// Copy
+// Edit
+//       case "submit": {
+//         if (state.message.email || state.message.pass) {
+//           return {
+//             ...state,
+//             showDialog: true,
+//             submitted: false, // ensure no submission flag is set
+//           };
+//         } else {
+//           return {
+//             ...state,
+//             showDialog: false,
+//             submitted: true, // flag that submission is valid
+//           };
+//         }
+//       }
+// Notes:
+
+// We add a new state property (submitted) to signal that the form has been submitted with valid data.
+// Do not call handleSubmit from inside the reducer.
+// 2. Initialize the new submitted flag in your initial state
+// Change at around Line 35:
+
+// Replace:
+
+// js
+// Copy
+// Edit
+//   const initialstate = {
+//     message: {
+//       email: "",
+//       pass: "",
+//     },
+//     email: "",
+//     password: "",
+//     showDialog: false,
+//   };
+// with:
+
+// js
+// Copy
+// Edit
+//   const initialstate = {
+//     message: {
+//       email: "",
+//       pass: "",
+//     },
+//     email: "",
+//     password: "",
+//     showDialog: false,
+//     submitted: false,
+//   };
+// 3. Add a reducer case to clear the submitted flag
+// Add a new case in your reducer (for example, after the "submit" case):
+
+// js
+// Copy
+// Edit
+//       case "clearSubmitted": {
+//         return {
+//           ...state,
+//           submitted: false,
+//         };
+//       }
+// 4. Use a useEffect to call handleSubmit when submission is valid
+// Add the following useEffect hook inside your component (after the useReducer hook, around Line 95):
+
+// js
+// Copy
+// Edit
+//   useEffect(() => {
+//     if (state.submitted) {
+//       handleSubmit(state);
+//       dispatch({ type: "clearSubmitted" });
+//     }
+//   }, [state.submitted]);
+// Note: Make sure to import useEffect from React:
+
+// js
+// Copy
+// Edit
+// import { useReducer, useEffect } from "react";
