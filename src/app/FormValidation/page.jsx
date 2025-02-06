@@ -56,7 +56,6 @@ export default function FormValidation() {
         let newemail = action.payload;
         let newobj;
         let errmsg = validateEmail(newemail);
-        console.log(action.payload);
         !validateEmail(newemail)
           ? (newobj = {
               ...state,
@@ -125,7 +124,6 @@ export default function FormValidation() {
   return (
     <div className="flex justify-center items-center min-h-screen">
       <Card className="w-[400px] shadow-xl">
-        {console.log(state)}
         <CardHeader>
           <CardTitle className="text-center text-2xl font-bold">
             Form Validation
