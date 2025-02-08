@@ -195,7 +195,7 @@ export function Navbar() {
                   variant="ghost"
                   className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
                 >
-                  <Link href="/FormValidation">
+                  <Link href="/FavoriteItemsToggle">
                   Toggle favorite items
                   </Link>
                 </Button>
