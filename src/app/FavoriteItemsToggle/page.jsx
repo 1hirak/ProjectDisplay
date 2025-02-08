@@ -25,7 +25,6 @@ export default function FavoriteItems() {
     }
     const [state, dispatch] = useReducer(reducer,initialstate)
 
-    console.log(state);
     
 
   return (
