@@ -106,11 +106,9 @@ export default function DynamicFormBuilder() {
       name: "hidden",
     },
   ];
-  const [fieldValue, setfielsdsValue] = useState("");
-  const [labelInput, setlabelInput] = useState("");
-  const [placeholderInput, setplaceholderInput] = useState("");
-
-  const initialstate = [];
+  const [fieldValue, setfielsdsValue] = useState();
+  const [labelInput, setlabelInput] = useState();
+  const [placeholderInput, setplaceholderInput] = useState();
 
   const reducer = (state, action) => {
     switch (action.type) {
@@ -124,7 +122,21 @@ export default function DynamicFormBuilder() {
         return state;
     }
   };
-  const [state, dispatch] = useReducer(reducer, initialstate);
+
+  const fromreducer = (formstate, action) => {
+    if (action.type === "input") {
+      return {
+        ...formstate,
+        [action.id]: action.payload,
+      };
+    }
+
+    return formstate;
+  };
+
+  const [state, dispatch] = useReducer(reducer, []);
+
+  const [formstate, formdispatch] = useReducer(fromreducer, {});
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
@@ -135,7 +147,6 @@ export default function DynamicFormBuilder() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          {/* Render dynamic input fields */}
           <div className="space-y-4">
             <div className="flex flex-wrap gap-2">
               {fields.map((x) => (
@@ -148,7 +159,6 @@ export default function DynamicFormBuilder() {
                 </button>
               ))}
             </div>
-            {/* Loop over dynamic fields */}
             <div className="flex items-center gap-2">
               <Input
                 placeholder="Label"
@@ -163,7 +173,7 @@ export default function DynamicFormBuilder() {
                 }
               />
             </div>
-            {console.log(state)}
+            
             <Button
               className="w-full"
               onClick={() => {
@@ -176,56 +186,69 @@ export default function DynamicFormBuilder() {
             </Button>
           </div>
 
-          <div className="flex items-center gap-2 mt-4">
-            <Input placeholder="Form Name" />
-            <Button
-              onClick={() => {
-                /* Dispatch submit */
-              }}
-            >
-              Create Form
-            </Button>
-          </div>
-          <form onSubmit={console.log("onsubmit")} className="space-y-4">
-            {
-              state.map(x => {return(
-                <div key={x.id}>
-                  <div className="grid w-full max-w-sm items-center gap-1.5">
-                    <Label htmlFor={x.htmlFor}>{x.label}</Label>
-                    <Input
-                      type={x.type}
-                      id={x.id}
-                      name={x.name}
-                      placeholder={x.label}
-                      //   value={formData.email}
-                      //   onChange={handleChange}
-                    />
-                  </div>
-                  
-                </div>)}
-              )}
-              {state&& <Button type="submit" className="w-full">
-                    Submit
-                  </Button>}
-          </form>
+          <form
+            // In your form's onSubmit handler
+            onSubmit={(e) => {
+              e.preventDefault();
+              const formattedData = Object.entries(formstate)
+                .map(([key, value]) => `${key}: ${value}`)
+                .join("\n");
 
-          {/*           
-          <form onSubmit={console.log("onsubmit")} className="space-y-4">
-            <div className="grid w-full max-w-sm items-center gap-1.5">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                type="search"
-                id="email"
-                name="email"
-                placeholder="Enter email"
-                //   value={formData.email}
-                //   onChange={handleChange}
-              />
-            </div>
-            <Button type="submit" className="w-full">
-              Submit
-            </Button>
-          </form> */}
+              window.alert(
+                `Form Data:\n----------------\n${formattedData}\n----------------`
+              );
+            }}
+            className="space-y-4"
+          >
+            {state[0] && (
+              <>
+                <div className="mt-4 mb-4 text-3xl flex justify-center">
+                  Preview
+                </div>
+
+                <div className="border-2 rounded-sm border-gray-500 p-4">
+                  {state.map((x) => (
+                    <div key={x.id} className="mt-4 mb-4">
+                      <div className="grid w-full items-center gap-1.5">
+                        <Label
+                          className="text-base ml-2 mb-2"
+                          htmlFor={x.htmlFor}
+                        >
+                          {x.label}
+                        </Label>
+                        <Input
+                          className="mb-2"
+                          type={x.type}
+                          id={x.id}
+                          name={x.name}
+                          placeholder={x.label}
+                          onChange={(e) =>
+                            formdispatch({
+                              type: "input",
+                              id: x.id,
+                              payload: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <Button type="submit" className="w-full">
+                  Submit Form
+                </Button>
+
+                {/* <div className="flex items-center gap-2 mt-4">
+                  <Input placeholder="Submit Button Name" />
+                </div>
+
+                <div className="flex items-center gap-2 mt-4">
+                  <Input placeholder="Form Name" />
+                  <Button type="submit">Create Form</Button>
+                </div> */}
+              </>
+            )}
+          </form>
         </CardContent>
       </Card>
     </div>
