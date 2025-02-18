@@ -37,6 +37,13 @@ export function Navbar() {
               bg-white shadow-lg dark:bg-black transition delay-200 duration-300 "
             >
               <Card className="space-y-1 p-2">
+              <Button
+                  variant="ghost"
+                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
+                >
+                  {" "}
+                  <Link href="/useeffect">UseEffect</Link>
+                </Button>
                 <Button
                   variant="ghost"
                   className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
