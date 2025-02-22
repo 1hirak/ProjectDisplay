@@ -1,10 +1,13 @@
-import React from "react";
+'use client';import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { Calculator, Home, Settings } from "lucide-react";
 
 export function Navbar() {
+  const [isProjectsDropdownOpen, setIsProjectsDropdownOpen] = useState(false);
+  const [isProjects2DropdownOpen, setIsProjects2DropdownOpen] = useState(false);
+
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-md dark:bg-black/80">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
@@ -17,13 +20,19 @@ export function Navbar() {
         {/* Navigation Menu */}
         <div className="flex items-center space-x-4">
           {/* Home Button */}
-          <Button variant="ghost" className="flex items-center">
-            <Home className="mr-2 h-4 w-4" />
-            <Link href="/">Home</Link>
-          </Button>
+          <Link href="/" passHref legacyBehavior>
+            <Button variant="ghost" className="flex items-center">
+              <Home className="mr-2 h-4 w-4" />
+              Home
+            </Button>
+          </Link>
 
           {/* Calculators Dropdown */}
-          <div className="relative group">
+          <div
+            className="relative group"
+            onMouseEnter={() => setIsProjectsDropdownOpen(true)}
+            onMouseLeave={() => setIsProjectsDropdownOpen(false)}
+          >
             <Button
               variant="ghost"
               className="flex items-center cursor-pointer"
@@ -33,187 +42,143 @@ export function Navbar() {
             </Button>
             {/* Dropdown Menu */}
             <div
-              className="absolute right-0 hidden group-hover:block group-hover:pointer-events-auto mt-0 w-72 rounded-lg 
-              bg-white shadow-lg dark:bg-black transition delay-200 duration-300 "
+              className={`absolute right-0 ${
+                isProjectsDropdownOpen ? "block" : "hidden"
+              } group-hover:block mt-0 w-72 rounded-lg bg-white shadow-lg dark:bg-black transition delay-200 duration-300`}
             >
               <Card className="space-y-1 p-2">
-              <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  {" "}
-                  <Link href="/useeffect">UseEffect</Link>
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  {" "}
-                  <Link href="/calculator">Calculator</Link>
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  <Link href="/counter">Counter</Link>
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  {" "}
-                  <Link href="/todo1">todo1</Link>
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  {" "}
-                  <Link href="/themeToggle">themeToggle</Link>
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  {" "}
-                  <Link href="/LightnDarkBulb">Light and Dark Bulb App</Link>
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  {" "}
-                  <Link href="/NumberDoublerApp">Number Doubler App</Link>
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  {" "}
-                  <Link href="/ShowHideTextApp">Show/Hide Text App</Link>
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  {" "}
-                  <Link href="/CounterwithStepIncrementDecrement">
-                    Counter /w Step In/De
-                  </Link>
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  {" "}
-                  <Link href="/ShoppingCartManager">Shopping Cart Manager</Link>
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  {" "}
-                  <Link href="/SimpleTabSwitcher">Simple Tab Switcher</Link>
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  {" "}
-                  <Link href="/AccordionComponent">Accordion Component</Link>
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  {" "}
-                  <Link href="/MultiInputFormStateManager">
+                {/* Dropdown Items */}
+                <Link href="/useeffect" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
+                    UseEffect
+                  </Button>
+                </Link>
+                <Link href="/calculator" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
+                    Calculator
+                  </Button>
+                </Link>
+                <Link href="/counter" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
+                    Counter
+                  </Button>
+                </Link>
+                <Link href="/todo1" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
+                    Todo 1
+                  </Button>
+                </Link>
+                <Link href="/themeToggle" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
+                    Theme Toggle
+                  </Button>
+                </Link>
+                <Link href="/LightnDarkBulb" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
+                    Light and Dark Bulb App
+                  </Button>
+                </Link>
+                <Link href="/NumberDoublerApp" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
+                    Number Doubler App
+                  </Button>
+                </Link>
+                <Link href="/ShowHideTextApp" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
+                    Show/Hide Text App
+                  </Button>
+                </Link>
+                <Link href="/CounterwithStepIncrementDecrement" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
+                    Counter with Step Increment/Decrement
+                  </Button>
+                </Link>
+                <Link href="/ShoppingCartManager" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
+                    Shopping Cart Manager
+                  </Button>
+                </Link>
+                <Link href="/SimpleTabSwitcher" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
+                    Simple Tab Switcher
+                  </Button>
+                </Link>
+                <Link href="/AccordionComponent" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
+                    Accordion Component
+                  </Button>
+                </Link>
+                <Link href="/MultiInputFormStateManager" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
                     Multi-Input Form State Manager
-                  </Link>
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  {" "}
-                  <Link href="/LightandDarkModeToggle">
-                    Light n Dark Mode Toggle
-                  </Link>
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  {" "}
-                  <Link href="/TodoListwithMark">
+                  </Button>
+                </Link>
+                <Link href="/LightandDarkModeToggle" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
+                    Light & Dark Mode Toggle
+                  </Button>
+                </Link>
+                <Link href="/TodoListwithMark" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
                     Todo List with Mark as Completed{" "}
                     <span className="text-red-700"> **</span>
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               </Card>
             </div>
           </div>
 
-          {/* Settings Button */}
-          <div className="relative group">
+          {/* Projects 2 Dropdown */}
+          <div
+            className="relative group"
+            onMouseEnter={() => setIsProjects2DropdownOpen(true)}
+            onMouseLeave={() => setIsProjects2DropdownOpen(false)}
+          >
             <Button
               variant="ghost"
               className="flex items-center cursor-pointer"
             >
-              <Calculator className="mr-2 h-4 w-4" />
+              <Settings className="mr-2 h-4 w-4" />
               Projects 2
             </Button>
             {/* Dropdown Menu */}
             <div
-              className="absolute right-0 hidden group-hover:block group-hover:pointer-events-auto mt-0 w-72 rounded-lg 
-              bg-white shadow-lg dark:bg-black transition delay-200 duration-300 "
+              className={`absolute right-0 ${
+                isProjects2DropdownOpen ? "block" : "hidden"
+              } group-hover:block mt-0 w-72 rounded-lg bg-white shadow-lg dark:bg-black transition delay-200 duration-300`}
             >
               <Card className="space-y-1 p-2">
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  {" "}
-                  <Link href="/calculator">Calculator</Link>
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  <Link href="/counter">Counter</Link>
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  <Link href="/CounterwithUndoandRedo">
+                {/* Dropdown Items */}
+                <Link href="/calculator" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
+                    Calculator
+                  </Button>
+                </Link>
+                <Link href="/counter" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
+                    Counter
+                  </Button>
+                </Link>
+                <Link href="/CounterwithUndoandRedo" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
                     Counter with Undo and Redo
-                  </Link>
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  <Link href="/FormValidation">
-                  Form Validation
-                  </Link>
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  <Link href="/FavoriteItemsToggle">
-                  Toggle favorite items
-                  </Link>
-                </Button>
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  <Link href="/DynamicFormBuilder">
-                  Dynamic Form Builder
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
+                <Link href="/FormValidation" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
+                    Form Validation
+                  </Button>
+                </Link>
+                <Link href="/FavoriteItemsToggle" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
+                    Toggle Favorite Items
+                  </Button>
+                </Link>
+                <Link href="/DynamicFormBuilder" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
+                    Dynamic Form Builder
+                  </Button>
+                </Link>
               </Card>
             </div>
           </div>
@@ -225,7 +190,6 @@ export function Navbar() {
           <Button variant="outline" size="sm">
             Toggle Button
           </Button>
-
           {/* Login Button */}
           <Button variant="outline" size="sm">
             Login
