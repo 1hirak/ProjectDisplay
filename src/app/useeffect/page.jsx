@@ -10,8 +10,8 @@ const resources = [
   { id: 1, title: "Fetch Data on Mount", path: "/useeffect/p1" },
   { id: 2, title: "Set Interval", path: "/useeffect/p2" },
   { id: 3, title: "Update Document Title on State Change", path: "/useeffect/p3" },
-  { id: 4, title: "Settings", path: "/settings" },
-  { id: 5, title: "Profile", path: "/profile" },
+  { id: 4, title: "Window Resize Listener", path: "/useeffect/p4" },
+  { id: 5, title: "Component with Cleanup on Unmount", path: "/useeffect/p5" },
 ];
 
 export default function TableList() {
