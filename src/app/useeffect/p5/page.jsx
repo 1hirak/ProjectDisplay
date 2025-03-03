@@ -1,92 +1,58 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect } from 'react';
+import { Button } from "@/components/ui/button"
+import { useState } from 'react';
 
-function SimpleMessagingApp() {
-  const [message, setMessage] = useState('')
-  const [messages, setMessages] = useState([
-    { text: 'Hey there!', isSent: false },
-    { text: 'Hi, how are you?', isSent: true }
-  ])
-  
-  // Handle submit form
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (!message.trim()) return
+
+function CleanupOnUnmount() {
+
+    const [msg, setmsg] = useState([])
     
-    // Add message
-    setMessages([...messages, { text: message, isSent: true }])
-    setMessage('')
-  }
-  
+  useEffect(() => {
+
+    const socket= new WebSocket("wss://ws.postman-echo.com/raw")
+
+     socket.addEventListener("open", ()=>{
+      console.log("connection created");
+      socket.send("hello world")
+      
+    })
+
+   
+
+    socket.addEventListener("message",(x)=>{
+      const data = x.data;
+      
+
+      setmsg(x=> [...x, data])
+      
+      
+      
+        // const data = JSON.parse(x)
+        // console.log(data);
+    })
+    
+
+    socket.addEventListener('close', ()=>{
+      console.log("connection closed");
+      
+    })
+    // TODO: Add your setup logic here (e.g., subscribe to a service, start a timer, etc.)
+
+    return () => {
+        socket.close()
+      // TODO: Add your cleanup logic here (e.g., unsubscribe, clear timers, etc.)
+    };
+  }, []); // Runs once on mount, cleanup runs on unmount
+
   return (
-    <div style={{ maxWidth: '400px', margin: '0 auto', fontFamily: 'Arial' }}>
-      <div style={{ 
-        height: '400px', 
-        border: '1px solid #ccc', 
-        borderRadius: '5px',
-        display: 'flex',
-        flexDirection: 'column'
-      }}>
-        {/* Messages area */}
-        <div style={{ 
-          flex: 1, 
-          padding: '10px',
-          overflowY: 'auto'
-        }}>
-          {messages.map((msg, index) => (
-            <div key={index} style={{
-              textAlign: msg.isSent ? 'right' : 'left',
-              marginBottom: '10px'
-            }}>
-              <span style={{
-                background: msg.isSent ? '#0084ff' : '#e5e5ea',
-                color: msg.isSent ? 'white' : 'black',
-                padding: '8px 12px',
-                borderRadius: '20px',
-                display: 'inline-block',
-                maxWidth: '70%'
-              }}>
-                {msg.text}
-              </span>
-            </div>
-          ))}
-        </div>
-        
-        {/* Input area */}
-        <form onSubmit={handleSubmit} style={{
-          display: 'flex',
-          padding: '10px',
-          borderTop: '1px solid #ccc'
-        }}>
-          <input
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="Type a message..."
-            style={{
-              flex: 1,
-              padding: '8px 12px',
-              border: '1px solid #ddd',
-              borderRadius: '20px',
-              marginRight: '8px'
-            }}
-          />
-          <button 
-            type="submit"
-            style={{
-              background: '#0084ff',
-              color: 'white',
-              border: 'none',
-              borderRadius: '20px',
-              padding: '8px 16px',
-              cursor: 'pointer'
-            }}
-          >
-            Send
-          </button>
-        </form>
-      </div>
+    <div>
+      {console.log(msg)
+      }
+      <h1>This component cleans up on unmount.</h1>
+        <Button onClick={()=>setfirst(x=>!x)} >rerender</Button>
     </div>
-  )
+  );
 }
 
-export default SimpleMessagingApp
+export default CleanupOnUnmount;
