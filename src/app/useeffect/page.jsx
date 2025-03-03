@@ -11,7 +11,12 @@ const resources = [
   { id: 2, title: "Set Interval", path: "/useeffect/p2" },
   { id: 3, title: "Update Document Title on State Change", path: "/useeffect/p3" },
   { id: 4, title: "Window Resize Listener", path: "/useeffect/p4" },
-  { id: 5, title: "Component with Cleanup on Unmount", path: "/useeffect/p5" },
+  { id: 5, title: "websocket basics", path: "/useeffect/p5" },
+  { id: 6, title: "ChatApp using Websocket** ", path: "/useeffect/p6" },
+  { id: 7, title: "websocket basic 2**", path: "/useeffect/p7" },
+  { id: 8, title: "Update Document Title on State Change", path: "/useeffect/p3" },
+  { id: 9, title: "Window Resize Listener", path: "/useeffect/p4" },
+  { id: 10, title: "websocket basics", path: "/useeffect/p5" },
 ];
 
 export default function TableList() {
