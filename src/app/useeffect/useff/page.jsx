@@ -1,20 +1,35 @@
-import { useRef, useEffect } from "react";
+"use client";
 
-function AutoFocusInput() {
-  const inputRef = useRef(null);
+import React from "react";
+import { useState, useEffect } from "react";
+
+const Useff = () => {
+  const [first, setfirst] = useState(1);
+  const [data, setdata] = useState("");
+  const [loading, setloading] = useState(false);
 
   useEffect(() => {
-    // After the component mounts, focus the input
-    inputRef.current.focus();
-  }, []);
+      setloading(true);
+      fetch("https://jsonplaceholder.typicode.com/todos/1")
+      .then((response) => response.json())
+      .then((json) => setdata(json))
+      .catch((err) => console.log(err));
+      setloading(false);
+
+      return ()=>{console.log("unmounted");
+      }
+  }, [first]);
 
   return (
-    <div>
-      <input
-        ref={inputRef} // 🔗 Connects the ref to the input
-        type="text"
-        placeholder="This input auto-focuses"
-      />
-    </div>
+    <>
+      <div>
+        <button onClick={() => setfirst(0)}>fatch data</button>
+      </div>
+
+      {loading && <div>loading...</div>}
+      {data && <div>{JSON.stringify(data)}</div>}
+    </>
   );
-}
+};
+
+export default Useff;
