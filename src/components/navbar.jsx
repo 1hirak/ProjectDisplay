@@ -53,6 +53,11 @@ export function Navbar() {
                     UseEffect
                   </Button>
                 </Link>
+                <Link href="/useref" passHref legacyBehavior>
+                  <Button variant="ghost" className="w-full justify-start">
+                    UseRef
+                  </Button>
+                </Link>
                 <Link href="/calculator" passHref legacyBehavior>
                   <Button variant="ghost" className="w-full justify-start">
                     Calculator

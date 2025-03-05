@@ -7,7 +7,7 @@ import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { ChevronRight } from "lucide-react";
 
 const resources = [
-  { id: 1, title: "Fetch Data on Mount", path: "/useref/p1" },
+  { id: 1, title: "Basic UseRef", path: "/useref/p1" },
   { id: 2, title: "Set Interval", path: "/useref/p2" },
   { id: 3, title: "Update Document Title on State Change", path: "/useref/p3" },
   { id: 4, title: "Window Resize Listener", path: "/useref/p4" },
