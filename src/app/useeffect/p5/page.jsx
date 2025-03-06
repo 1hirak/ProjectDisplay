@@ -1,58 +1,47 @@
-'use client'
-import React, { useEffect } from 'react';
-import { Button } from "@/components/ui/button"
-import { useState } from 'react';
-
-
+"use client";
+import React, { useState, useRef, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input"
 function CleanupOnUnmount() {
+  const [msg, setmsg] = useState([]);
+  const [inputValue, setinputValue] = useState('')
 
-    const [msg, setmsg] = useState([])
-    
+  const socketRef = useRef(new WebSocket("wss://ws.postman-echo.com/raw"));
+
+  const SOCKET = socketRef.current;
+
   useEffect(() => {
-
-    const socket= new WebSocket("wss://ws.postman-echo.com/raw")
-
-     socket.addEventListener("open", ()=>{
+    SOCKET.addEventListener("open", () => {
       console.log("connection created");
-      socket.send("hello world")
-      
-    })
+      SOCKET.send("hello world");
+    });
 
-   
-
-    socket.addEventListener("message",(x)=>{
+    SOCKET.addEventListener("message", (x) => {
       const data = x.data;
-      
+      setmsg((x) => [...x, data]);
+    });
 
-      setmsg(x=> [...x, data])
-      
-      
-      
-        // const data = JSON.parse(x)
-        // console.log(data);
-    })
-    
-
-    socket.addEventListener('close', ()=>{
+    SOCKET.addEventListener("close", () => {
       console.log("connection closed");
-      
-    })
-    // TODO: Add your setup logic here (e.g., subscribe to a service, start a timer, etc.)
+    });
 
     return () => {
-        socket.close()
-      // TODO: Add your cleanup logic here (e.g., unsubscribe, clear timers, etc.)
+      SOCKET.close();
     };
-  }, []); // Runs once on mount, cleanup runs on unmount
 
+  }, []);
+
+  const handleClick = () => { 
+    SOCKET.send(inputValue);
+    console.log("clicked")
+   }
   return (
     <div>
-      {console.log(msg)
-      }
+      {console.log(msg)}
       <h1>This component cleans up on unmount.</h1>
-        <Button onClick={()=>setfirst(x=>!x)} >rerender</Button>
+      <Input type="text" onChange={(e) => setinputValue(e.target.value)} />
+      <Button onClick={() => handleClick ()}>send</Button>
     </div>
   );
 }
-
 export default CleanupOnUnmount;

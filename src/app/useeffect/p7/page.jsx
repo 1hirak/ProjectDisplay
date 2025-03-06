@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Send } from "lucide-react";
@@ -7,27 +7,30 @@ import { Send } from "lucide-react";
 function WebSocketChat() {
   const [messages, setMessages] = useState([]);
   const [inputValue, setinputValue] = useState("");
+
+  const socketRef = useRef(new WebSocket("wss://ws.postman-echo.com/raw"))
+  const socket = socketRef.current;
   useEffect(() => {
-    const socket = new WebSocket("wss://ws.postman-echo.com/raw");
 
     socket.addEventListener("open", () => {
       console.log("connection established");
-      socket.send("hello");
     });
     socket.addEventListener("message", (x) => {
         const data = x.data;
         setMessages((x) => [...x, data]);
       });
-      const handleSubmit = () => {
-        socket.send(inputValue);
-        setinputValue("");
-      };
+     
     
 
     return () => {
       socket.close();
     };
   }, []);
+
+  const handleSubmit = () => {
+    socket.send(inputValue);
+    setinputValue("");
+  };
 
  
   return (
