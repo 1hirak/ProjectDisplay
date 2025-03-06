@@ -8,15 +8,15 @@ import { ChevronRight } from "lucide-react";
 
 const resources = [
   { id: 1, title: "Basic UseRef", path: "/useref/p1" },
-  { id: 2, title: "Set Interval", path: "/useref/p2" },
-  { id: 3, title: "Update Document Title on State Change", path: "/useref/p3" },
-  { id: 4, title: "Window Resize Listener", path: "/useref/p4" },
-  { id: 5, title: "websocket basics", path: "/useref/p5" },
-  { id: 6, title: "ChatApp using Websocket** ", path: "/useref/p6" },
-  { id: 7, title: "websocket basic 2**", path: "/useref/p7" },
-  { id: 8, title: "Update Document Title on State Change", path: "/useref/p8" },
-  { id: 9, title: "Window Resize Listener", path: "/useref/p9" },
-  { id: 10, title: "websocket basics", path: "/useref/p10" },
+  { id: 2, title: "_", path: "/useref/p2" },
+  { id: 3, title: "_", path: "/useref/p3" },
+  { id: 4, title: "_", path: "/useref/p4" },
+  { id: 5, title: "_", path: "/useref/p5" },
+  { id: 6, title: "_ ", path: "/useref/p6" },
+  { id: 7, title: "_", path: "/useref/p7" },
+  { id: 8, title: "_", path: "/useref/p8" },
+  { id: 9, title: "_", path: "/useref/p9" },
+  { id: 10, title: "_", path: "/useref/p10" },
 ];
 
 export default function TableList() {
