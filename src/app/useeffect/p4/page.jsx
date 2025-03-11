@@ -3,9 +3,12 @@
 import React, { useState, useEffect } from "react";
 
 function WindowResizeListener() {
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(0);
+
+
 
   useEffect(() => {
+    setWidth(window.innerWidth)
     const handleresize = () => 
       setWidth(window.innerWidth);
     
