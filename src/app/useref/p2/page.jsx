@@ -4,13 +4,15 @@ import { Button } from "@/components/ui/button";
 
 function BrokenTimer() {
   const [seconds, setSeconds] = useState(0);
+  const [showStartTimer, setshowStartTimer] = useState(true)
   let intervalId = useRef(0); // ❌ Regular variable instead of useRef
 
   const startTimer = () => {
     if (intervalId.current === 0) {
+      setshowStartTimer(false)
       intervalId.current = setInterval(() => {
         setSeconds((s) => s + 1);
-      }, 300);
+      }, 200);
     }
   };
 
@@ -19,20 +21,26 @@ function BrokenTimer() {
 
     clearInterval(intervalId.current); // ❌ intervalId is reset on every render
     intervalId.current = 0;
+    setshowStartTimer(true)
   };
 
   const resetTimer = () => {
     clearInterval(intervalId.current);
     intervalId.current = 0;
     setSeconds(0);
+    setshowStartTimer(true)
   };
 
   return (
     <div className="flex flex-col items-center mt-6">
       <h1>Elapsed Time: {seconds} seconds</h1>
       <div className="flex gap-2 mt-4">
-        <Button onClick={startTimer}>Start</Button>
-        <Button onClick={stopTimer}>Stop</Button>
+        
+        {showStartTimer?
+        <Button onClick={startTimer}>Start</Button>:
+        <Button onClick={stopTimer}>Stop</Button>}
+
+
         <Button onClick={resetTimer}>Reset</Button>
       </div>
       <div className="max-w-xl mt-6">
