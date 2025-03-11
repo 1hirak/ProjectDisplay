@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 function BrokenTimer() {
   const [seconds, setSeconds] = useState(0);
   const [showStartTimer, setshowStartTimer] = useState(true)
-  let intervalId = useRef(0); // ❌ Regular variable instead of useRef
+  let intervalId = useRef(0);
 
   const startTimer = () => {
     if (intervalId.current === 0) {
@@ -17,9 +17,8 @@ function BrokenTimer() {
   };
 
   const stopTimer = () => {
-    console.log("Clearing interval ID:", intervalId.current); // Add this line
 
-    clearInterval(intervalId.current); // ❌ intervalId is reset on every render
+    clearInterval(intervalId.current); 
     intervalId.current = 0;
     setshowStartTimer(true)
   };
