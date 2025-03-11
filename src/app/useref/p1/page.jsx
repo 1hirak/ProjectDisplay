@@ -8,14 +8,14 @@ function AutoFocusInput() {
     setfirst(x=>!x)
  }
   return (
-    <>
-      {/* <input ref={inputRef} type="text" placeholder="Enter text" /> */}
-      <div>{inputRef.current}</div>
+    <div className="flex flex-col items-center">
+      <div 
+      >{inputRef.current}</div>
       <button
         onClick={()=>handleClick()}>
         click
       </button>
-    </>
+    </div>
   );
 }
 export default AutoFocusInput;
