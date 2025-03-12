@@ -9,8 +9,8 @@ import { ChevronRight } from "lucide-react";
 const resources = [
   { id: 1, title: "Basic UseRef", path: "/useref/p1" },
   { id: 2, title: "Timeout Function", path: "/useref/p2" },
-  { id: 3, title: "_", path: "/useref/p3" },
-  { id: 4, title: "_", path: "/useref/p4" },
+  { id: 3, title: "AutoFocus", path: "/useref/p3" },
+  { id: 4, title: "Render Count", path: "/useref/p4" },
   { id: 5, title: "_", path: "/useref/p5" },
   { id: 6, title: "_ ", path: "/useref/p6" },
   { id: 7, title: "_", path: "/useref/p7" },
