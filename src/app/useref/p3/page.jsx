@@ -1,23 +1,35 @@
 'use client'
-import React, { useRef } from 'react';
+import { useRef,useEffect } from 'react'
 
-function StyleChanger() {
-  const paraRef = useRef(null);
+function FocusManager() {
+  // Create refs for both input fields
+  const firstInputRef = useRef(null)
+  const secondInputRef = useRef(null)
 
-  const changeStyle = () => {
-    // Modify the paragraph's style using paraRef.current
-    if (paraRef.current) {
-      paraRef.current.style.backgroundColor = 'yellow';
-      paraRef.current.style.fontSize = '1.5rem';
-    }
-  };
+  useEffect(() => {
+    firstInputRef.current.focus()
+  }, [])
+   
+  const handleClick = () => {
+    secondInputRef.current.focus()
+  }
 
   return (
-    <div>
-      <p ref={paraRef}>Watch my style change!</p>
-      <button onClick={changeStyle}>Change Style</button>
+    <div className='flex flex-col items-center gap-2 mt-4'>
+        
+      <input 
+        type="text"
+        placeholder="First Input"
+        ref={firstInputRef}
+      />
+      <input
+        type="text"
+        placeholder="Second Input"
+        ref={secondInputRef}
+      />
+      <button onClick={handleClick}>Focus Second Input</button>
     </div>
-  );
+  )
 }
 
-export default StyleChanger;
+export default FocusManager
