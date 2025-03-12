@@ -1,35 +1,25 @@
-'use client'
-import { useRef,useEffect } from 'react'
+"use client";
+import { useRef, useEffect } from "react";
 
 function FocusManager() {
-  // Create refs for both input fields
-  const firstInputRef = useRef(null)
-  const secondInputRef = useRef(null)
+  const firstInputRef = useRef(null);
+  const secondInputRef = useRef(null);
 
   useEffect(() => {
-    firstInputRef.current.focus()
-  }, [])
-   
+    firstInputRef.current.focus();
+  }, []);
+
   const handleClick = () => {
-    secondInputRef.current.focus()
-  }
+    secondInputRef.current.focus();
+  };
 
   return (
-    <div className='flex flex-col items-center gap-2 mt-4'>
-        
-      <input 
-        type="text"
-        placeholder="First Input"
-        ref={firstInputRef}
-      />
-      <input
-        type="text"
-        placeholder="Second Input"
-        ref={secondInputRef}
-      />
+    <div className="flex flex-col items-center gap-2 mt-4">
+      <input type="text" placeholder="First Input" ref={firstInputRef} />
+      <input type="text" placeholder="Second Input" ref={secondInputRef} />
       <button onClick={handleClick}>Focus Second Input</button>
     </div>
-  )
+  );
 }
 
-export default FocusManager
+export default FocusManager;
