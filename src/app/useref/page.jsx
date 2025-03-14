@@ -13,8 +13,8 @@ const resources = [
   { id: 4, title: "Render Count", path: "/useref/p4" },
   { id: 5, title: "Dynamic Height Textarea", path: "/useref/p5" },
   { id: 6, title: "Click Outside to Close", path: "/useref/p6" },
-  { id: 7, title: "_", path: "/useref/p7" },
-  { id: 8, title: "_", path: "/useref/p8" },
+  { id: 7, title: "Canvas Drawing Board", path: "/useref/p7" },
+  { id: 8, title: "Video Player with Progress Tracking", path: "/useref/p8" },
   { id: 9, title: "_", path: "/useref/p9" },
   { id: 10, title: "_", path: "/useref/p10" },
 ];

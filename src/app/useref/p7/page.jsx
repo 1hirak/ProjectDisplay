@@ -1,5 +1,5 @@
 "use client";
-import { useState,useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function DrawingBoard() {
   const canvasRef = useRef(null);
@@ -32,7 +32,7 @@ export default function DrawingBoard() {
     if (!isDrawing.current) return;
 
     const [p, q] = getCoordinates(e);
-    
+
     ctxRef.current.lineTo(p, q);
     ctxRef.current.stroke();
   };
