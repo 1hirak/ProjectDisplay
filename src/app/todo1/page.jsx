@@ -29,8 +29,7 @@ const reducer = (state, action) => {
 export default function todo1() {
 
   const [inputTodo, setInputTodo] = useState("");
-
-  // TODO: Implement the add todo handler
+  
   const handleAddTodo = () => {
     if (inputTodo.trim() !== "") {
       let newItem = {
