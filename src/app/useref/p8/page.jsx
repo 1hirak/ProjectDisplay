@@ -36,7 +36,7 @@ function VideoPlayer() {
         ref={videoRef}
         width="600"
         src="/sample-video.mp4" 
-        controls
+        
       />
       <div style={{ height: "4px", background: "#ddd" }}>
         <div
