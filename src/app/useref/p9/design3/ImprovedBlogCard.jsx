@@ -1,19 +1,20 @@
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import Image from 'next/image'
 import { CalendarIcon, UserIcon, MapPinIcon } from 'lucide-react';
 
-const ImprovedBlogCard = () => {
+  const ImprovedBlogCard = ({post}) => {
   // Mock data from the user's input
-  const post = {
-    id: "l1m2n3",
-    image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1",
-    title: "Exploring the Great Ocean Road",
-    author: "Theo Wilson",
-    description: "Discover the breathtaking coastal views along the Great Ocean Road in Australia.",
-    date: "2023-04-05",
-    category: "Road Trips"
-  };
+  // const post = {
+  //   id: "l1m2n3",
+  //   image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1",
+  //   title: "Exploring the Great Ocean Road",
+  //   author: "Theo Wilson",
+  //   description: "Discover the breathtaking coastal views along the Great Ocean Road in Australia.",
+  //   date: "2023-04-05",
+  //   category: "Road Trips"
+  // };
 
   // Travel-related accent color - aqua blue (#4ECDC4)
   const accentColor = "#4ECDC4";
@@ -23,9 +24,11 @@ const ImprovedBlogCard = () => {
       <div className="relative overflow-hidden">
         {/* Image with partial color treatment in default state */}
         <div className="h-48 overflow-hidden">
-          <img 
-            src={post.image} 
+          <Image
+            src={post.image||"/palceholder800_450.webp"} 
             alt={post.title}
+            width={800} 
+            height={450} 
             className="object-cover w-full h-full filter grayscale-[50%] group-hover:grayscale-0 transform scale-100 group-hover:scale-110 transition-all duration-700"
           />
         </div>
@@ -104,4 +107,4 @@ const ImprovedBlogCard = () => {
   );
 };
 
-export default ImprovedBlogCard;
+export default ImprovedBlogCard
