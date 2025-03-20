@@ -88,7 +88,7 @@ import { CalendarIcon, UserIcon, MapPinIcon } from 'lucide-react';
                 className="transform group-hover:translate-y-px transition-transform duration-300"
                 style={{ color: accentColor }} 
               />
-              <span className="group-hover:font-medium transition-all duration-300">Australia</span>
+              <span className="group-hover:font-medium transition-all duration-300">{post.countryName}</span>
             </div>
           </div>
         </div>
