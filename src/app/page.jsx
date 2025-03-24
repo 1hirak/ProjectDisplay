@@ -108,13 +108,29 @@ const ProjectShowcase = () => {
       link: "/projects/video-player",
       githubLink: "https://github.com/username/custom-video-player",
       imagePath: "media/shots/video-player.webp"
+    },
+    {
+      title: "Real-time Chat App",
+      description: "Interactive messaging platform with secure authentication using Clerk and real-time communication via WebSockets.",
+      technologies: ["WebSocket", "Clerk Auth", "React"],
+      link: "/projects/chat-app",
+      githubLink: "https://github.com/username/realtime-chat-app",
+      imagePath: "media/shots/chat-app.webp"
+    },
+    {
+      title: "AI Chat Assistant",
+      description: "Conversational interface that connects to LLM APIs with streaming responses delivered through WebSockets for a natural, real-time experience.",
+      technologies: ["WebSocket", "OpenAI API", "React"],
+      link: "/projects/ai-chat",
+      githubLink: "https://github.com/username/ai-chat-assistant",
+      imagePath: "media/shots/ai-chat.webp"
     }
   ];
 
   return (
     <div className="container mx-auto p-6">
-      <h2 className="text-3xl font-bold mb-8">My Projects</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <h2 className="text-3xl font-semibold mb-8 ">All My Projects</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {projects.map((project, index) => (
           <ProjectCard 
             key={index}
@@ -123,7 +139,7 @@ const ProjectShowcase = () => {
             technologies={project.technologies}
             link={project.link}
             githubLink={project.githubLink}
-            imagePath={project.imagePath}
+            imagePath={project.imagePath || "https://placehold.co/800x600"}
           />
         ))}
       </div>
@@ -142,7 +158,7 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* About Section */}
-          <div className="col-span-1 md:col-span-2">
+          <div className="col-span-1 md:col-span-2">  
             <h3 className="text-xl font-bold mb-4">Hirak Das</h3>
             <p className="text-gray-600 dark:text-gray-400 mb-4">
               Front-end developer passionate about creating intuitive and engaging user experiences 
