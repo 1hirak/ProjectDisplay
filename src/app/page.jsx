@@ -60,7 +60,7 @@ const ProjectCard = ({ title, description, technologies, link, githubLink, image
 };
 
 const ProjectShowcase = () => {
-  const projects = [
+  const  projects = [
     {
       title: "E-Commerce Platform",
       description: "A full-featured online store built with Medusa headless commerce solution, featuring product management, cart functionality, and checkout.",
@@ -82,7 +82,7 @@ const ProjectShowcase = () => {
       description: "Customizable form creation tool with authentication and database integration for collecting and storing user submissions.",
       technologies: ["Supabase", "Clerk Auth"],
       link: "/projects/form-builder",
-      githubLink: "https://github.com/username/ ",
+      githubLink: "https://github.com/username/",
       imagePath: "media/shots/form-builder.webp"
     },
     {
@@ -124,8 +124,25 @@ const ProjectShowcase = () => {
       link: "/projects/ai-chat",
       githubLink: "https://github.com/username/ai-chat-assistant",
       imagePath: "media/shots/ai-chat.webp"
+    },
+    {
+      title: "Real-time Stock Trading Simulator",
+      description: "A platform where users can track real-time stock prices, manage a watchlist, and simulate buying and selling stocks, mimicking a trading environment.",
+      technologies: ["React", "Redux", "WebSocket", "Clerk Auth", "React-Finance-Charts"],
+      link: "/projects/stock-trading-simulator",
+      githubLink: "https://github.com/username/stock-trading-simulator",
+      imagePath: "media/shots/stock-trading-simulator.webp"
+    },
+    {
+      title: "Risk Management Tool",
+      description: "An application that calculates and visualizes risk metrics for investment portfolios, helping users assess potential risks.",
+      technologies: ["React", "Chart.js", "Clerk Auth"],
+      link: "/projects/risk-management-tool",
+      githubLink: "https://github.com/username/risk-management-tool",
+      imagePath: "media/shots/risk-management-tool.webp"
     }
   ];
+
 
   return (
     <div className="container mx-auto p-6">
