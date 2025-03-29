@@ -53,7 +53,7 @@ import { CalendarIcon, UserIcon, MapPinIcon } from 'lucide-react';
       <div className="p-4">
         {/* Title with partial underline in default state */}
         <h2 className="text-xl font-bold text-gray-900 relative inline-block mb-2">
-          {post.title}
+          {post.title+" "+post.id}
           <span 
             className="absolute bottom-0 left-0 w-1/4 h-px bg-black group-hover:w-full transition-all duration-300"
             style={{ height: '1px' }}
