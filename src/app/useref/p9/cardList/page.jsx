@@ -70,7 +70,6 @@ const cardList = () => {
 
   useEffect(() => {
     setlist(modifiedList);
-
     return () => {};
   }, [refVal.current]);
 
@@ -88,7 +87,7 @@ const cardList = () => {
       <div className="mt-6 mb-6">
         <Pagination>
           <PaginationContent>
-            <span>{state.paginationValue}</span>
+            {/* <span>{state.paginationValue}</span>  intended for testing */}
 
             {/* previous */}
             <PaginationItem>
