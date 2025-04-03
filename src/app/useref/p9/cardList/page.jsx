@@ -43,6 +43,20 @@ const cardList = () => {
               paginationValue: pageVal - 1,
             };
       }
+
+      case "numberDispatch": {
+        if (state.paginationValue != action.payload) {
+          let startVal = 8 * (action.payload - 1);
+          let endVal = 8 * (action.payload - 1) + 8;
+          let pageVal = action.payload;
+          refVal.current = (x) => !x;
+          return {
+            startIndex: startVal,
+            endIndex: endVal,
+            paginationValue: pageVal,
+          };
+        }
+      }
       default:
         return state;
     }
@@ -74,24 +88,69 @@ const cardList = () => {
       <div className="mt-6 mb-6">
         <Pagination>
           <PaginationContent>
+            <span>{state.paginationValue}</span>
+
+            {/* previous */}
             <PaginationItem>
               <PaginationPrevious
                 onClick={() => dispatch({ type: "PREVIOUS" })}
               />
             </PaginationItem>
-            <PaginationItem>
-              <PaginationLink onClick={() => console.log("clicked")} isActive={state.paginationValue===1}>
-                {state.paginationValue===1?1:Number(state.paginationValue) - 1}
+
+            {/* number one  */}
+            <PaginationItem
+              onClick={() =>
+                dispatch({
+                  type: "numberDispatch",
+                  payload:
+                    state.paginationValue === 1
+                      ? 1
+                      : Number(state.paginationValue) - 1,
+                })
+              }
+            >
+              <PaginationLink isActive={state.paginationValue === 1}>
+                {state.paginationValue === 1
+                  ? 1
+                  : Number(state.paginationValue) - 1}
               </PaginationLink>
             </PaginationItem>
-            <PaginationItem>
-              <PaginationLink isActive={state.paginationValue>=2}>{state.paginationValue===1?2:state.paginationValue}</PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink >
-                {state.paginationValue<3?3:Number(state.paginationValue) + 1}
+
+            {/* number two  */}
+            <PaginationItem
+              onClick={() =>
+                dispatch({
+                  type: "numberDispatch",
+                  payload:
+                    state.paginationValue === 1 ? 2 : state.paginationValue,
+                })
+              }
+            >
+              <PaginationLink isActive={state.paginationValue >= 2}>
+                {state.paginationValue === 1 ? 2 : state.paginationValue}
               </PaginationLink>
             </PaginationItem>
+
+            {/* number three  */}
+            <PaginationItem
+              onClick={() =>
+                dispatch({
+                  type: "numberDispatch",
+                  payload:
+                    state.paginationValue < 3
+                      ? 3
+                      : Number(state.paginationValue) + 1,
+                })
+              }
+            >
+              <PaginationLink>
+                {state.paginationValue < 3
+                  ? 3
+                  : Number(state.paginationValue) + 1}
+              </PaginationLink>
+            </PaginationItem>
+
+            {/* next */}
             <PaginationItem>
               <PaginationEllipsis />
             </PaginationItem>
