@@ -17,7 +17,9 @@ const resources = [
   { id: 8, title: "Video Player with Progress Tracking", path: "/useref/p8" },
   { id: 9, title: "Blog Cards + pagination ", path: "/useref/p9/cardList" },
   { id: 10, title: "Blog Cards + expandable stack ", path: "/useref/p9/cardList2" },
-  { id: 11, title: "_", path: "/useref/p10" },
+  { id: 11, title: "Blog Cards + auto expandable stack ", path: "/useref/p9/cardList3" },
+  { id: 12, title: "Blog Cards + virtualized list(windowing) ", path: "/useref/p9/cardList4" },
+  { id: 13, title: "_", path: "/useref/p10" },
 ];
 
 export default function TableList() {
