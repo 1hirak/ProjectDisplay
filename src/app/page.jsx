@@ -10,64 +10,78 @@ const cardProjects = [
   {
     name: "Dynamic Form Builder",
     url: "/DynamicFormBuilder",
-    githubUrl: "https://github.com/yourusername/DynamicFormBuilder",
+    githubUrl:
+      "https://github.com/1hirak/ProjectDisplay/blob/main/src/app/DynamicFormBuilder/page.jsx",
     description:
       "Dynamic Form Builder using React, leveraging useReducer for state management to dynamically add and handle form fields. It features a clean UI with ShadCN components, allowing users to select from various input types, customize labels, and set placeholders. The form preview updates in real-time, and form data is processed on submission with a formatted alert. It’s intuitive, scalable, and designed for seamless user interaction, showcasing my focus on functionality and user experience.",
   },
   {
     name: "Todo List with Mark as Completed",
     url: "/TodoListwithMark",
-    githubUrl: "https://github.com/yourusername/TodoListwithMark",
-    description: "The TodoApp component is a fully functional todo list application that allows users to: 1. Add new tasks.  2. Edit existing tasks. 3. Delete individual tasks or all tasks at once. 4. Mark tasks as completed or incomplete using checkboxes. 5. Interact with a responsive and styled UI.  It uses React hooks (useReducer and useState) for state management, and third-party libraries like uuidv4 for unique task IDs and ShadCN for UI components.",
+    githubUrl:
+      "https://github.com/1hirak/ProjectDisplay/blob/main/src/app/TodoListwithMark/page.jsx",
+    description:
+      "The TodoApp component is a fully functional todo list application that allows users to: 1. Add new tasks.  2. Edit existing tasks. 3. Delete individual tasks or all tasks at once. 4. Mark tasks as completed or incomplete using checkboxes. 5. Interact with a responsive and styled UI.  It uses React hooks (useReducer and useState) for state management, and third-party libraries like uuidv4 for unique task IDs and ShadCN for UI components.",
   },
   {
     name: "Form Validation using useReducer Hook",
     url: "/FormValidation",
-    githubUrl: "https://github.com/yourusername/FormValidation",
+    githubUrl:
+      "https://github.com/1hirak/ProjectDisplay/blob/main/src/app/FormValidation/page.jsx",
     description:
       "This is a React-based Form Validation component I developed using useReducer for state management. It’s designed to validate email and password inputs with custom logic—checking for email format, disposable domains, and password strength (6+ characters, letters, and numbers). Errors are displayed conditionally via a reducer-driven state, and the form submits only when valid. Built with ShadCN UI, it’s a concise, reusable solution I created for secure and user-friendly form handling",
   },
   {
     name: "Blog Cards with Pagination",
     url: "/useref/p9/cardList",
-    githubUrl: "https://github.com/yourusername/cardList",
-    description: "This is a paginated blog card list I engineered with React, leveraging useReducer and useRef for state control. It’s built to display blog posts from a dataset, sliced into groups of eight, with dynamic pagination handled via a reducer. The component features responsive card layouts and a custom pagination UI using ShadCN components. I designed it to efficiently update the list on navigation, ensuring a seamless browsing experience for users.",
+    githubUrl:
+      "https://github.com/1hirak/ProjectDisplay/blob/main/src/app/useref/p9/cardList/page.jsx",
+    description:
+      "This is a paginated blog card list I engineered with React, leveraging useReducer and useRef for state control. It’s built to display blog posts from a dataset, sliced into groups of eight, with dynamic pagination handled via a reducer. The component features responsive card layouts and a custom pagination UI using ShadCN components. I designed it to efficiently update the list on navigation, ensuring a seamless browsing experience for users.",
   },
   {
     name: "Expandable Blog Cards",
     url: "/useref/p9/cardList2",
-    githubUrl: "https://github.com/yourusername/cardList2",
-    description: "This is an infinite-load blog card list I constructed using React and useReducer for state management. It’s designed to initially display eight blog posts from a dataset, with a Load More button triggering the reducer to append the next eight entries. The responsive grid layout adapts across screen sizes, showcasing each post with an ImprovedBlogCard component. I built it to provide a smooth, incremental content-loading experience for users.",
+    githubUrl:
+      "https://github.com/1hirak/ProjectDisplay/blob/main/src/app/useref/p9/cardList2/page.jsx",
+    description:
+      "This is an infinite-load blog card list I constructed using React and useReducer for state management. It’s designed to initially display eight blog posts from a dataset, with a Load More button triggering the reducer to append the next eight entries. The responsive grid layout adapts across screen sizes, showcasing each post with an ImprovedBlogCard component. I built it to provide a smooth, incremental content-loading experience for users.",
   },
   {
     name: "Canvas Drawing Board",
     url: "/useref/p7",
-    githubUrl: "https://github.com/yourusername/p7",
-    description: "This is a drawing board I built with React, leveraging useRef and useState for real-time functionality. It uses an HTML5 canvas (800x600) where the getCoordinates logic calculates mouse positions relative to the canvas. The startDrawing function initiates strokes on onMouseDown, draw tracks movement with onMouseMove, and onMouseUp/onMouseLeave stop it. The useEffect hook updates the 2D context’s strokeStyle with a color picker, enabling dynamic brush color changes for freehand sketching.",
+    githubUrl:
+      "https://github.com/1hirak/ProjectDisplay/blob/main/src/app/useref/p7/page.jsx",
+    description:
+      "This is a drawing board I built with React, leveraging useRef and useState for real-time functionality. It uses an HTML5 canvas (800x600) where the getCoordinates logic calculates mouse positions relative to the canvas. The startDrawing function initiates strokes on onMouseDown, draw tracks movement with onMouseMove, and onMouseUp/onMouseLeave stop it. The useEffect hook updates the 2D context’s strokeStyle with a color picker, enabling dynamic brush color changes for freehand sketching.",
   },
   {
     name: "Video Player with Progress Tracking",
     url: "/useref/p8",
-    githubUrl: "https://github.com/yourusername/p8",
-    description: "This is a video player I built using React with useRef and useState for dynamic control. It’s designed with a custom timeline, where progress updates every 200ms via setInterval, and users can click to seek. The play/pause toggle and reset functionality are handled with button events, adjusting the video’s state. Styled minimally with a progress bar, it’s a lightweight, interactive component I created for seamless video playback control.",
+    githubUrl:
+      "https://github.com/1hirak/ProjectDisplay/blob/main/src/app/useref/p8/page.jsx",
+    description:
+      "This is a video player I built using React with useRef and useState for dynamic control. It’s designed with a custom timeline, where progress updates every 200ms via setInterval, and users can click to seek. The play/pause toggle and reset functionality are handled with button events, adjusting the video’s state. Styled minimally with a progress bar, it’s a lightweight, interactive component I created for seamless video playback control.",
   },
   {
-    name: "WebSocket Basics",
+    name: "WebSocket Pingback",
     url: "/useeffect/p7",
-    githubUrl: "https://github.com/yourusername/p7",
-    description: "This is a WebSocket-based chat component I crafted with React, using useRef and useState for state handling. It connects to the Postman Echo WebSocket API (wss://ws.postman-echo.com/raw), which echoes messages back in real time. The logic listens for incoming messages via socket.addEventListener, appending them to a list, while the handleSubmit function sends user input to the server. Styled with ShadCN UI, it’s a simple, live chat interface I built for instant communication.",
+    githubUrl:
+      "https://github.com/1hirak/ProjectDisplay/blob/main/src/app/useeffect/p7/page.jsx",
+    description:
+      "This is a WebSocket-based chat component I crafted with React, using useRef and useState for state handling. It connects to the Postman Echo WebSocket API (wss://ws.postman-echo.com/raw), which echoes messages back in real time. The logic listens for incoming messages via socket.addEventListener, appending them to a list, while the handleSubmit function sends user input to the server. Styled with ShadCN UI, it’s a simple, live chat interface I built for instant communication.",
   },
 ];
 
 const tableProjects = [
-  { name: "UseEffect Projects", url: "/useeffect" },
+  { name: "UseEffect Examples", url: "/useeffect" },
   { name: "Fetch Data on Mount", url: "/useeffect/p1" },
   { name: "Set Interval", url: "/useeffect/p2" },
   { name: "Update Document Title on State Change", url: "/useeffect/p3" },
   { name: "Window Resize Listener", url: "/useeffect/p4" },
   { name: "WebSocket Basics", url: "/useeffect/p5" },
   { name: "ChatApp using WebSocket", url: "/useeffect/p6" },
-  { name: "UseRef Projects", url: "/useref" },
+  { name: "UseRef Examples", url: "/useref" },
   { name: "Basic UseRef", url: "/useref/p1" },
   { name: "Timeout Function", url: "/useref/p2" },
   { name: "AutoFocus", url: "/useref/p3" },
@@ -112,9 +126,11 @@ export function ProjectDisplay() {
               <p className="text-gray-700 mb-5">{project.description}</p>
             </div>
             <div className="flex space-x-2 mt-4">
-              <Button variant="outline" className="flex-1">
-                View Project
-              </Button>
+              <Link href={project.url} passHref legacyBehavior>
+                <Button variant="outline" className="flex-1">
+                  View Project
+                </Button>
+              </Link>
               <Button
                 variant="outline"
                 className="flex-1"
@@ -133,7 +149,7 @@ export function ProjectDisplay() {
           <thead className="bg-gray-100">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-                Other Mini Projects
+                Project Name
               </th>
             </tr>
           </thead>
