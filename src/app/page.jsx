@@ -1,257 +1,167 @@
-import React from 'react';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ExternalLink} from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+"use client";
+import React from "react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { Card } from "@/components/ui/card";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import { ChevronRight } from "lucide-react";
 
-const ProjectCard = ({ title, description, technologies, link, githubLink, imagePath }) => {
+const cardProjects = [
+  {
+    name: "Dynamic Form Builder",
+    url: "/DynamicFormBuilder",
+    githubUrl: "https://github.com/yourusername/DynamicFormBuilder",
+    description:
+      "Dynamic Form Builder using React, leveraging useReducer for state management to dynamically add and handle form fields. It features a clean UI with ShadCN components, allowing users to select from various input types, customize labels, and set placeholders. The form preview updates in real-time, and form data is processed on submission with a formatted alert. It’s intuitive, scalable, and designed for seamless user interaction, showcasing my focus on functionality and user experience.",
+  },
+  {
+    name: "Todo List with Mark as Completed",
+    url: "/TodoListwithMark",
+    githubUrl: "https://github.com/yourusername/TodoListwithMark",
+    description: "The TodoApp component is a fully functional todo list application that allows users to: 1. Add new tasks.  2. Edit existing tasks. 3. Delete individual tasks or all tasks at once. 4. Mark tasks as completed or incomplete using checkboxes. 5. Interact with a responsive and styled UI.  It uses React hooks (useReducer and useState) for state management, and third-party libraries like uuidv4 for unique task IDs and ShadCN for UI components.",
+  },
+  {
+    name: "Form Validation using useReducer Hook",
+    url: "/FormValidation",
+    githubUrl: "https://github.com/yourusername/FormValidation",
+    description:
+      "This is a React-based Form Validation component I developed using useReducer for state management. It’s designed to validate email and password inputs with custom logic—checking for email format, disposable domains, and password strength (6+ characters, letters, and numbers). Errors are displayed conditionally via a reducer-driven state, and the form submits only when valid. Built with ShadCN UI, it’s a concise, reusable solution I created for secure and user-friendly form handling",
+  },
+  {
+    name: "Blog Cards with Pagination",
+    url: "/useref/p9/cardList",
+    githubUrl: "https://github.com/yourusername/cardList",
+    description: "This is a paginated blog card list I engineered with React, leveraging useReducer and useRef for state control. It’s built to display blog posts from a dataset, sliced into groups of eight, with dynamic pagination handled via a reducer. The component features responsive card layouts and a custom pagination UI using ShadCN components. I designed it to efficiently update the list on navigation, ensuring a seamless browsing experience for users.",
+  },
+  {
+    name: "Expandable Blog Cards",
+    url: "/useref/p9/cardList2",
+    githubUrl: "https://github.com/yourusername/cardList2",
+    description: "This is an infinite-load blog card list I constructed using React and useReducer for state management. It’s designed to initially display eight blog posts from a dataset, with a Load More button triggering the reducer to append the next eight entries. The responsive grid layout adapts across screen sizes, showcasing each post with an ImprovedBlogCard component. I built it to provide a smooth, incremental content-loading experience for users.",
+  },
+  {
+    name: "Canvas Drawing Board",
+    url: "/useref/p7",
+    githubUrl: "https://github.com/yourusername/p7",
+    description: "This is a drawing board I built with React, leveraging useRef and useState for real-time functionality. It uses an HTML5 canvas (800x600) where the getCoordinates logic calculates mouse positions relative to the canvas. The startDrawing function initiates strokes on onMouseDown, draw tracks movement with onMouseMove, and onMouseUp/onMouseLeave stop it. The useEffect hook updates the 2D context’s strokeStyle with a color picker, enabling dynamic brush color changes for freehand sketching.",
+  },
+  {
+    name: "Video Player with Progress Tracking",
+    url: "/useref/p8",
+    githubUrl: "https://github.com/yourusername/p8",
+    description: "This is a video player I built using React with useRef and useState for dynamic control. It’s designed with a custom timeline, where progress updates every 200ms via setInterval, and users can click to seek. The play/pause toggle and reset functionality are handled with button events, adjusting the video’s state. Styled minimally with a progress bar, it’s a lightweight, interactive component I created for seamless video playback control.",
+  },
+  {
+    name: "WebSocket Basics",
+    url: "/useeffect/p7",
+    githubUrl: "https://github.com/yourusername/p7",
+    description: "This is a WebSocket-based chat component I crafted with React, using useRef and useState for state handling. It connects to the Postman Echo WebSocket API (wss://ws.postman-echo.com/raw), which echoes messages back in real time. The logic listens for incoming messages via socket.addEventListener, appending them to a list, while the handleSubmit function sends user input to the server. Styled with ShadCN UI, it’s a simple, live chat interface I built for instant communication.",
+  },
+];
+
+const tableProjects = [
+  { name: "UseEffect Projects", url: "/useeffect" },
+  { name: "Fetch Data on Mount", url: "/useeffect/p1" },
+  { name: "Set Interval", url: "/useeffect/p2" },
+  { name: "Update Document Title on State Change", url: "/useeffect/p3" },
+  { name: "Window Resize Listener", url: "/useeffect/p4" },
+  { name: "WebSocket Basics", url: "/useeffect/p5" },
+  { name: "ChatApp using WebSocket", url: "/useeffect/p6" },
+  { name: "UseRef Projects", url: "/useref" },
+  { name: "Basic UseRef", url: "/useref/p1" },
+  { name: "Timeout Function", url: "/useref/p2" },
+  { name: "AutoFocus", url: "/useref/p3" },
+  { name: "Render Count", url: "/useref/p4" },
+  { name: "Dynamic Height Textarea", url: "/useref/p5" },
+  { name: "Click Outside to Close", url: "/useref/p6" },
+  { name: "Calculator App", url: "/calculator" },
+  { name: "Counter App", url: "/counter" },
+  { name: "Basic Todo App", url: "/todo1" },
+  { name: "Theme Toggle", url: "/themeToggle" },
+  { name: "Light and Dark Bulb App", url: "/LightnDarkBulb" },
+  { name: "Number Doubler App", url: "/NumberDoublerApp" },
+  { name: "Show/Hide Text App", url: "/ShowHideTextApp" },
+  {
+    name: "Step Increment/Decrement Counter",
+    url: "/CounterwithStepIncrementDecrement",
+  },
+  { name: "Shopping Cart Manager", url: "/ShoppingCartManager" },
+  { name: "Simple Tab Switcher", url: "/SimpleTabSwitcher" },
+  { name: "Accordion Component", url: "/AccordionComponent" },
+  {
+    name: "Multi-Input Form State Manager",
+    url: "/MultiInputFormStateManager",
+  },
+  { name: "Light & Dark Mode Toggle", url: "/LightandDarkModeToggle" },
+  { name: "Counter with Undo and Redo", url: "/CounterwithUndoandRedo" },
+  { name: "Toggle Favorite Items", url: "/FavoriteItemsToggle" },
+];
+
+export function ProjectDisplay() {
   return (
-    <Card className="flex flex-col h-full transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px] hover:border-primary/20">
-      <CardHeader className="p-4">
-        {/* Project image */}
-        <div className="w-full h-full bg-gray-200 rounded-md mb-4 overflow-hidden">
-          <img 
-            src={imagePath} 
-            alt={`${title} thumbnail`} 
-            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" 
-          />
-        </div>
-        <CardTitle className="text-xl">{title}</CardTitle>
-      </CardHeader>
-      <CardContent className="flex-grow p-4 pt-0">
-        <CardDescription className="text-sm mb-4">{description}</CardDescription>
-        <div className="flex flex-wrap gap-2 mt-2">
-          {technologies.map((tech, index) => (
-            <Badge 
-              key={index} 
-              variant="secondary" 
-              className="text-xs transition-colors duration-300 hover:bg-primary/10"
-            >
-              {tech}
-            </Badge>
-          ))}
-        </div>
-      </CardContent>
-      <CardFooter className="p-4 pt-0 flex justify-start">
-        <Button 
-          variant="outline" 
-          size="sm" 
-          className="transition-all duration-300 hover:bg-primary/10 hover:border-primary"
-          asChild
-        >
-          <a href={link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-            View Project <ExternalLink size={16} />
-          </a>
-        </Button>
-        
-        <Button 
-          variant="outline" 
-          size="sm" 
-          className="ml-2 transition-all duration-300 hover:bg-primary/10 hover:border-primary flex items-center"
-          asChild
-        >
-            <a href={githubLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 	line-height: 1">
-              Browse Code<img className='w-4 h-4' src="media/github-mark.svg" alt="" />
-            </a> 
-        </Button>
-      </CardFooter>
-    </Card>
-  );
-};
-
-const ProjectShowcase = () => {
-  const  projects = [
-    {
-      title: "E-Commerce Platform",
-      description: "A full-featured online store built with Medusa headless commerce solution, featuring product management, cart functionality, and checkout.",
-      technologies: ["React", "Medusa", "Redux"],
-      link: "/projects/ecommerce",
-      githubLink: "https://github.com/username/ecommerce-platform",
-      imagePath: "media/shots/ecommerce.webp"
-    },
-    {
-      title: "Kanban Todo List",
-      description: "Interactive task management app with drag-and-drop capability for organizing tasks across different status columns.",
-      technologies: ["Redux", "dndkit", "Supabase"],
-      link: "/projects/todolist",
-      githubLink: "https://github.com/username/kanban-todolist",
-      imagePath: "media/shots/todolist.webp"
-    },
-    {
-      title: "Form Builder",
-      description: "Customizable form creation tool with authentication and database integration for collecting and storing user submissions.",
-      technologies: ["Supabase", "Clerk Auth"],
-      link: "/projects/form-builder",
-      githubLink: "https://github.com/username/",
-      imagePath: "media/shots/form-builder.webp"
-    },
-    {
-      title: "Blog Application",
-      description: "Content management system for creating and publishing blog posts with a headless CMS backend and state management.",
-      technologies: ["Redux", "Strapi"],
-      link: "/projects/blog",
-      githubLink: "https://github.com/username/blog-app",
-      imagePath: "media/shots/blog.webp"
-    },
-    {
-      title: "Paint App",
-      description: "Digital drawing application with various tools and features for creating artwork directly in the browser.",
-      technologies: ["React Hooks"],
-      link: "/projects/paint",
-      githubLink: "https://github.com/username/paint-app",
-      imagePath: "media/shots/paint.webp"
-    },
-    {
-      title: "Custom Video Player",
-      description: "Fully customized video player with playlist management and drag-and-drop functionality built without external video libraries.",
-      technologies: ["dndkit", "React Hooks"],
-      link: "/projects/video-player",
-      githubLink: "https://github.com/username/custom-video-player",
-      imagePath: "media/shots/video-player.webp"
-    },
-    {
-      title: "Real-time Chat App",
-      description: "Interactive messaging platform with secure authentication using Clerk and real-time communication via WebSockets.",
-      technologies: ["WebSocket", "Clerk Auth", "React"],
-      link: "/projects/chat-app",
-      githubLink: "https://github.com/username/realtime-chat-app",
-      imagePath: "media/shots/chat-app.webp"
-    },
-    {
-      title: "AI Chat Assistant",
-      description: "Conversational interface that connects to LLM APIs with streaming responses delivered through WebSockets for a natural, real-time experience.",
-      technologies: ["WebSocket", "OpenAI API", "React"],
-      link: "/projects/ai-chat",
-      githubLink: "https://github.com/username/ai-chat-assistant",
-      imagePath: "media/shots/ai-chat.webp"
-    },
-    {
-      title: "Real-time Stock Trading Simulator",
-      description: "A platform where users can track real-time stock prices, manage a watchlist, and simulate buying and selling stocks, mimicking a trading environment.",
-      technologies: ["React", "Redux", "WebSocket", "Clerk Auth", "React-Finance-Charts"],
-      link: "/projects/stock-trading-simulator",
-      githubLink: "https://github.com/username/stock-trading-simulator",
-      imagePath: "media/shots/stock-trading-simulator.webp"
-    },
-    {
-      title: "Risk Management Tool",
-      description: "An application that calculates and visualizes risk metrics for investment portfolios, helping users assess potential risks.",
-      technologies: ["React", "Chart.js", "Clerk Auth"],
-      link: "/projects/risk-management-tool",
-      githubLink: "https://github.com/username/risk-management-tool",
-      imagePath: "media/shots/risk-management-tool.webp"
-    }
-  ];
-
-
-  return (
-    <div className="container mx-auto p-6">
-      <h2 className="text-3xl font-semibold mb-8 ">All My Projects</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {projects.map((project, index) => (
-          <ProjectCard 
+    <div className="container mx-auto p-4">
+      {/* Card Section */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        {cardProjects.map((project, index) => (
+          <Card
+            className="p-6 border rounded-lg shadow-md flex flex-col justify-between transition-transform transform hover:scale-105 hover:shadow-lg"
             key={index}
-            title={project.title}
-            description={project.description}
-            technologies={project.technologies}
-            link={project.link}
-            githubLink={project.githubLink}
-            imagePath={project.imagePath || "https://placehold.co/800x600"}
-          />
+          >
+            <div>
+              <h3 className="text-xl font-semibold mb-3">{project.name}</h3>
+              <p className="text-gray-700 mb-5">{project.description}</p>
+            </div>
+            <div className="flex space-x-2 mt-4">
+              <Button variant="outline" className="flex-1">
+                View Project
+              </Button>
+              <Button
+                variant="outline"
+                className="flex-1"
+                onClick={() => window.open(project.githubUrl, "_blank")}
+              >
+                View Source Code
+              </Button>
+            </div>
+          </Card>
         ))}
       </div>
-      <Footer/>
+
+      {/* Table Section */}
+      <Card className="p-4 border rounded-lg shadow-md">
+        <Table>
+          <thead className="bg-gray-100">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
+                Other Mini Projects
+              </th>
+            </tr>
+          </thead>
+          <TableBody className="bg-white divide-y divide-gray-200">
+            {tableProjects.map((project, index) => (
+              <TableRow key={index} className="hover:bg-gray-50 cursor-pointer">
+                <TableCell className="px-6 py-4 whitespace-nowrap">
+                  <Link
+                    href={project.url}
+                    passHref
+                    legacyBehavior
+                    className="w-full h-full block"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-medium text-gray-900">
+                        {project.name}
+                      </span>
+                      <ChevronRight className="w-4 h-4" strokeWidth={1.5} />
+                    </div>
+                  </Link>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Card>
     </div>
   );
-};
+}
 
-import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
-
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
-  
-  return (
-    <footer className="bg-gray-100 dark:bg-gray-900 mt-12 py-10 border-t">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* About Section */}
-          <div className="col-span-1 md:col-span-2">  
-            <h3 className="text-xl font-bold mb-4">Hirak Das</h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-4">
-              Front-end developer passionate about creating intuitive and engaging user experiences 
-              with modern web technologies.
-            </p>
-            <div className="flex space-x-4">
-              <a href="https://github.com/hirakdas" target="_blank" rel="noopener noreferrer" 
-                className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors">
-                <Github size={20} />
-              </a>
-              <a href="https://twitter.com/hirakdas" target="_blank" rel="noopener noreferrer"
-                className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors">
-                <Twitter size={20} />
-              </a>
-              <a href="https://linkedin.com/in/hirakdas" target="_blank" rel="noopener noreferrer"
-                className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors">
-                <Linkedin size={20} />
-              </a>
-              <a href="mailto:hirak@email.com"
-                className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors">
-                <Mail size={20} />
-              </a>
-            </div>
-          </div>
-          
-          {/* Quick Links */}
-          <div className="col-span-1">
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="/" className="text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-white transition-colors">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="/about" className="text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-white transition-colors">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="/projects" className="text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-white transition-colors">
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a href="/contact" className="text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-white transition-colors">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-          
-          {/* Contact Info */}
-          <div className="col-span-1">
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
-            <address className="not-italic">
-              <p className="text-gray-600 dark:text-gray-400 mb-2">
-                India
-              </p>
-              <p className="text-gray-600 dark:text-gray-400 mb-2">
-                hirak@email.com
-              </p>
-            </address>
-          </div>
-        </div>
-        
-        {/* Copyright */}
-        <div className="border-t border-gray-200 dark:border-gray-800 mt-8 pt-8 text-center">
-          <p className="text-gray-500 dark:text-gray-400 text-sm">
-            © {currentYear} Hirak Das. All rights reserved.
-          </p>
-        </div>
-      </div>
-    </footer>
-  );
-};
-
-
-export default ProjectShowcase;
+export default ProjectDisplay;
