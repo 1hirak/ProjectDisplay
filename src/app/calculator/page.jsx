@@ -163,64 +163,11 @@ export default function PortfolioHomepage() {
     { name: "Leadership", icon: <Users className="mr-2 h-5 w-5" /> },
   ];
 
-  return (
+  return (<>
+
     <div className="flex flex-col min-h-screen">
       {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
-        <div className="container px-4 mx-auto max-w-6xl flex h-16 items-center justify-between">
-          <div className="font-bold text-xl">
-            <a href="#" className="hover:text-primary transition-colors">
-              Hirak
-            </a>
-          </div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:block">
-            <ul className="flex space-x-8">
-              {["Home", "About", "Skills", "Projects", "Contact"].map(
-                (item) => (
-                  <li key={item}>
-                    <a
-                      href={`#${item.toLowerCase()}`}
-                      className="text-sm font-medium hover:text-primary transition-colors"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                )
-              )}
-            </ul>
-          </nav>
-
-          {/* Mobile Navigation */}
-          <Sheet>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <nav>
-                <ul className="flex flex-col space-y-4 mt-8">
-                  {["Home", "About", "Skills", "Projects", "Contact"].map(
-                    (item) => (
-                      <li key={item}>
-                        <a
-                          href={`#${item.toLowerCase()}`}
-                          className="text-lg font-medium hover:text-primary transition-colors"
-                        >
-                          {item}
-                        </a>
-                      </li>
-                    )
-                  )}
-                </ul>
-              </nav>
-            </SheetContent>
-          </Sheet>
-        </div>
-      </header>
+      
 
       <main className="flex-grow">
         {/* Hero Section */}
@@ -245,7 +192,7 @@ export default function PortfolioHomepage() {
 
               <p className="text-base sm:text-lg text-muted-foreground mb-6 md:mb-8 max-w-xl mx-auto px-4">
                 I'm a passionate web developer with a keen eye for design and a
-                knack for solving complex problems. With several years of
+                knack for solving complex problems. With years of
                 experience creating responsive, user-friendly websites, I bring
                 creativity and technical expertise to every project.
               </p>
@@ -401,44 +348,9 @@ export default function PortfolioHomepage() {
       </main>
 
       {/* Footer */}
-      <footer
-        id="contact"
-        className="bg-primary text-primary-foreground py-8 md:py-10"
-      >
-        <div className="container px-4 mx-auto max-w-6xl">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div>
-              <p className="text-sm">© 2025 Hirak Das. All rights reserved.</p>
-            </div>
-
-            <div className="flex space-x-4">
-              <Button 
-              onClick={() => window.open("https://github.com/1hirak", "_blank")} variant="ghost" size="icon" className="rounded-full">
-                <Github className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
-              </Button>
-              <Button onClick={()=>alert("Unavilahle")} variant="ghost" size="icon" className="rounded-full">
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
-              </Button>
-              <Button onClick={()=>alert("Unavilahle")} variant="ghost" size="icon" className="rounded-full">
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </Button>
-            </div>
-
-            <div className="flex items-center">
-              <Mail className="h-5 w-5 mr-2" />
-              <a
-                href="mailto:your@email.com"
-                className="text-sm hover:underline"
-              >
-                jhirak83@gmail.com
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      
     </div>
+    
+    </>
   );
 }
