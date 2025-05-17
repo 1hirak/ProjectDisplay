@@ -41,7 +41,7 @@ const SocialButton = ({ name, href, icon: Icon, action }) => (
 const Footer = () => (
   <footer
     id="contact"
-    className="bg-primary text-primary-foreground py-8 md:py-10 sticky bottom-0"
+    className="bg-primary text-primary-foreground py-8 md:py-10 bottom-0"
   >
     <div className="container px-4 mx-auto max-w-6xl">
       <div className="flex flex-col md:flex-row justify-between items-center gap-6">
